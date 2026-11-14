@@ -12,6 +12,8 @@
 [ext_resource type="Shader" uid="uid://cwr85l0ys6rao" path="res://assets/shaders/dissolve.gdshader" id="4_v5dby"]
 [ext_resource type="Resource" uid="uid://cups0gq4cr44m" path="res://data/monsters/guy2.tres" id="5_gb53w"]
 [ext_resource type="FontFile" uid="uid://dsiklsmlhntq1" path="res://assets/fonts/PixeloidSans.ttf" id="5_t5ptc"]
+[ext_resource type="PackedScene" uid="uid://bldahf3sw418u" path="res://scenes/Player/Inventory/slot.tscn" id="13_srmg5"]
+[ext_resource type="Resource" uid="uid://m41bfsl5jyi8" path="res://data/weapons/wand.tres" id="14_umvgx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlabj"]
 texture = ExtResource("2_5qq27")
@@ -322,6 +324,12 @@ texture = ExtResource("3_dlabj")
 [sub_resource type="TileSet" id="TileSet_rtxm7"]
 sources/0 = SubResource("TileSetAtlasSource_srmg5")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84vye"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vamnb"]
+bg_color = Color(5.7756904e-07, 0.6233913, 0.96567994, 1)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kntej"]
 seed = -15
 frequency = 0.0021
@@ -362,12 +370,6 @@ shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.03
 shader_parameter/burn_color = Color(1.5, 0.924, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84vye"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vamnb"]
-bg_color = Color(5.7756904e-07, 0.6233913, 0.96567994, 1)
-
 [node name="World" type="Node2D" unique_id=1989316078]
 script = ExtResource("1_dphjl")
 
@@ -403,69 +405,6 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="PickCard" type="Control" parent="CanvasLayer/Control" unique_id=240273407]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/PickCard" unique_id=1933307258]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PickCard" unique_id=910167296]
-custom_minimum_size = Vector2(152, 207)
-custom_maximum_size = Vector2(-1, 207)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -88.5
-offset_bottom = 118.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="Card" parent="CanvasLayer/Control/PickCard/HBoxContainer" unique_id=1547331308 instance=ExtResource("3_6m72w")]
-material = SubResource("ShaderMaterial_dlabj")
-layout_mode = 2
-
-[node name="Card2" parent="CanvasLayer/Control/PickCard/HBoxContainer" unique_id=400604783 instance=ExtResource("3_6m72w")]
-material = SubResource("ShaderMaterial_srmg5")
-layout_mode = 2
-
-[node name="Card3" parent="CanvasLayer/Control/PickCard/HBoxContainer" unique_id=920563589 instance=ExtResource("3_6m72w")]
-material = SubResource("ShaderMaterial_umvgx")
-layout_mode = 2
-
-[node name="Card4" parent="CanvasLayer/Control/PickCard/HBoxContainer" unique_id=1630203869 instance=ExtResource("3_6m72w")]
-material = SubResource("ShaderMaterial_mxkvs")
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/PickCard" unique_id=1425032601]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 136.0
-offset_bottom = 156.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("5_t5ptc")
-theme_override_font_sizes/font_size = 24
-text = "PICK AN ITEM"
-horizontal_alignment = 1
-autowrap_mode = 3
-
 [node name="topContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1311282561]
 layout_mode = 1
 anchors_preset = 10
@@ -498,6 +437,72 @@ grow_horizontal = 2
 grow_vertical = 0
 show_percentage = false
 
+[node name="PickCard" type="Control" parent="CanvasLayer/Control" unique_id=240273407]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/PickCard" unique_id=1933307258]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PickCard" unique_id=910167296]
+custom_minimum_size = Vector2(152, 207)
+custom_maximum_size = Vector2(-1, 207)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -88.5
+offset_right = 14.0
+offset_bottom = 118.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Card" parent="CanvasLayer/Control/PickCard/HBoxContainer" unique_id=1547331308 instance=ExtResource("3_6m72w")]
+material = SubResource("ShaderMaterial_dlabj")
+layout_mode = 2
+
+[node name="Card2" parent="CanvasLayer/Control/PickCard/HBoxContainer" unique_id=400604783 instance=ExtResource("3_6m72w")]
+material = SubResource("ShaderMaterial_srmg5")
+layout_mode = 2
+
+[node name="Card3" parent="CanvasLayer/Control/PickCard/HBoxContainer" unique_id=920563589 instance=ExtResource("3_6m72w")]
+material = SubResource("ShaderMaterial_umvgx")
+layout_mode = 2
+
+[node name="Card4" parent="CanvasLayer/Control/PickCard/HBoxContainer" unique_id=1630203869 instance=ExtResource("3_6m72w")]
+material = SubResource("ShaderMaterial_mxkvs")
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PickCard" unique_id=1425032601]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 56.0
+offset_bottom = 86.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_t5ptc")
+theme_override_font_sizes/font_size = 24
+text = "PICK AN ITEM"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="coinContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=346484124]
 layout_mode = 1
 anchors_preset = 1
@@ -518,3 +523,18 @@ text = "50"
 custom_maximum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("3_1fp7r")
+
+[node name="weaponContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1612392555]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot" parent="CanvasLayer/Control/weaponContainer" unique_id=1630648498 instance=ExtResource("13_srmg5")]
+layout_mode = 2
+weapon = ExtResource("14_umvgx")
+
+[node name="Slot2" parent="CanvasLayer/Control/weaponContainer" unique_id=748344731 instance=ExtResource("13_srmg5")]
+layout_mode = 2
+
+[node name="Slot3" parent="CanvasLayer/Control/weaponContainer" unique_id=418538664 instance=ExtResource("13_srmg5")]
+layout_mode = 2

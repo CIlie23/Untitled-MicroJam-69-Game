@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://crx4hglgg5laf"]
+
+[ext_resource type="Script" uid="uid://bv1tmrv82qkmk" path="res://scenes/DamagePopup/damage.gd" id="1_cv248"]
+
+[node name="Damage" type="Label" unique_id=1801436474]
+offset_right = 40.0
+offset_bottom = 20.0
+text = "69"
+horizontal_alignment = 1
+script = ExtResource("1_cv248")

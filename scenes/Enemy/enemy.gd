@@ -1,13 +1,14 @@
 extends CharacterBody2D
  
 @export var player_reference : CharacterBody2D
-var damage_popup_node = preload("res://scenes/damage.tscn")
+var damage_popup_node = preload( "res://scenes/DamagePopup/damage.tscn")
 var direction : Vector2
 var speed : float = 75
 var damage : float
 var knockback : Vector2
 var separation : float
- 
+
+
 var health : float:
 	set(value):
 		health = value
@@ -38,6 +39,7 @@ func check_separation(_delta):
  
 	if separation < player_reference.nearest_enemy_distance:
 		player_reference.nearest_enemy = self
+		player_reference.nearest_enemy_distance = separation
  
 	if separation >= 500 and not elite:
 		queue_free()
@@ -56,11 +58,7 @@ func damage_popup(amount):
 	popup.text = str(amount)
 	popup.position = position + Vector2(-50,-25)
 	get_tree().current_scene.add_child(popup)
-	# float up, fade out, free: popups are one-shot
-	var tween = popup.create_tween().set_parallel()
-	tween.tween_property(popup, "position:y", popup.position.y - 40, 0.6)
-	tween.tween_property(popup, "modulate:a", 0.0, 0.6)
-	tween.chain().tween_callback(popup.queue_free)
+	# animation + queue_free live in damage.gd, on the popup itself
  
  
 func take_damage(amount):
