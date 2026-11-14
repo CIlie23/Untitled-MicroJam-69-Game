@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://cwr85l0ys6rao" path="res://assets/shaders/dissolve.gdshader" id="1_8jfk0"]
 [ext_resource type="Script" uid="uid://dm2fws52ngxr4" path="res://scenes/Cards/card.gd" id="1_borcn"]
 [ext_resource type="Shader" uid="uid://lkuwaqgpubaf" path="res://scenes/Cards/card.gdshader" id="2_3drot"]
+[ext_resource type="Texture2D" uid="uid://c3mdlqqo0cwoa" path="res://assets/monsters/2.png" id="5_avk55"]
 [ext_resource type="Texture2D" uid="uid://cupglc11tjolx" path="res://assets/textures/Tiles_A_white.png" id="5_t5m02"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kntej"]
@@ -33,9 +34,6 @@ shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsth3"]
-size = Vector2(130, 175)
-
 [node name="Card" type="Button" unique_id=1547331308]
 material = SubResource("ShaderMaterial_3ph3s")
 custom_minimum_size = Vector2(152, 207)
@@ -48,9 +46,9 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7aqjh")
 script = ExtResource("1_borcn")
-velocity_multiplier = 1.0
 
 [node name="Shadow" type="TextureRect" parent="." unique_id=668925553]
+visible = false
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(1, 1, 1, 0.168627)
 show_behind_parent = true
@@ -76,12 +74,13 @@ grow_vertical = 2
 texture = ExtResource("5_t5m02")
 expand_mode = 1
 
-[node name="DestroyArea" type="Area2D" parent="." unique_id=1373982566]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyArea" unique_id=1406662349]
-position = Vector2(75, 104.5)
-shape = SubResource("RectangleShape2D_xsth3")
-disabled = true
+[node name="TextureRect" type="TextureRect" parent="CardTexture" unique_id=1712857369]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 83.0
+offset_right = 99.0
+offset_bottom = 123.0
+texture = ExtResource("5_avk55")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://bwqaxy8v5vuik"]
+
+[ext_resource type="PackedScene" uid="uid://b8ca5nnly4evs" path="res://scenes/Cards/card.tscn" id="1_gwp4k"]
+[ext_resource type="Shader" uid="uid://cwr85l0ys6rao" path="res://assets/shaders/dissolve.gdshader" id="2_hsfdm"]
+[ext_resource type="FontFile" uid="uid://dsiklsmlhntq1" path="res://assets/fonts/PixeloidSans.ttf" id="3_e3vyn"]
+[ext_resource type="Script" uid="uid://bqol35vk30aq0" path="res://scenes/UpgradeScreen/pick_card.gd" id="4_pick"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kntej"]
+seed = -15
+frequency = 0.0021
+fractal_octaves = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bboy4"]
+noise = SubResource("FastNoiseLite_kntej")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hsfdm"]
+resource_local_to_scene = true
+shader = ExtResource("2_hsfdm")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_bboy4")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.03
+shader_parameter/burn_color = Color(1.5, 0.924, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3vyn"]
+resource_local_to_scene = true
+shader = ExtResource("2_hsfdm")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_bboy4")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.03
+shader_parameter/burn_color = Color(1.5, 0.924, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a53vx"]
+resource_local_to_scene = true
+shader = ExtResource("2_hsfdm")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_bboy4")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.03
+shader_parameter/burn_color = Color(1.5, 0.924, 0, 1)
+
+[node name="PickCard" type="Control" unique_id=1306509114]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_pick")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="." unique_id=2043588514]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=215723643]
+custom_minimum_size = Vector2(152, 207)
+custom_maximum_size = Vector2(-1, 207)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -88.5
+offset_right = 14.0
+offset_bottom = 118.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Card" parent="HBoxContainer" unique_id=1547331308 instance=ExtResource("1_gwp4k")]
+material = SubResource("ShaderMaterial_hsfdm")
+layout_mode = 2
+
+[node name="Card2" parent="HBoxContainer" unique_id=623060161 instance=ExtResource("1_gwp4k")]
+material = SubResource("ShaderMaterial_e3vyn")
+layout_mode = 2
+
+[node name="Card3" parent="HBoxContainer" unique_id=1914870961 instance=ExtResource("1_gwp4k")]
+material = SubResource("ShaderMaterial_a53vx")
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1456265203]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 32.0
+offset_bottom = 62.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_e3vyn")
+theme_override_font_sizes/font_size = 24
+text = "PICK AN ITEM"
+horizontal_alignment = 1
+autowrap_mode = 3

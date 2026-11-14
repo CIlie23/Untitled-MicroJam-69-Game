@@ -8,7 +8,7 @@
 script = ExtResource("2_yuxax")
 title = "Wand"
 texture = ExtResource("3_vuk1u")
-damage = 3.0
+damage = 500.0
 cooldown = 3.0
 speed = 400.0
 metadata/_custom_type_script = "uid://b654mg2w6xy4q"

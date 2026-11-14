@@ -15,6 +15,7 @@ wait_time = 9.0
 autostart = true
 
 [node name="Normal" type="Timer" parent="." unique_id=1673049972]
+one_shot = true
 autostart = true
 
 [node name="Pattern" type="Timer" parent="." unique_id=477231456]

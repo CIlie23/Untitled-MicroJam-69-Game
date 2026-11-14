@@ -8,11 +8,15 @@ var damage : float
 var knockback : Vector2
 var separation : float
 
+const PICKUP_SCENE := preload("res://scenes/Xp/pickups.tscn")
+const PICKUP_TYPE := preload("res://data/items/xp_gem.tres")
+
 
 var health : float:
 	set(value):
 		health = value
 		if health <= 0:
+			drop_pickup()
 			queue_free()
  
 var elite : bool = false:
@@ -53,6 +57,16 @@ func knockback_update(delta):
 		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
  
  
+func drop_pickup():
+	var pickup = PICKUP_SCENE.instantiate()
+	pickup.type = PICKUP_TYPE
+	pickup.player_reference = player_reference
+	pickup.position = position
+	# deferred: enemies die inside body_entered, posting an Area2D to the tree
+	# mid-flush is refused by the physics server
+	get_tree().current_scene.add_child.call_deferred(pickup)
+
+
 func damage_popup(amount):
 	var popup = damage_popup_node.instantiate()
 	popup.text = str(amount)
