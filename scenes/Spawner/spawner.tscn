@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1cbccdfels6p" path="res://scenes/Spawner/spawner.gd" id="1_u111k"]
 [ext_resource type="PackedScene" uid="uid://2hp54xbjqdyl" path="res://scenes/Enemy/enemy.tscn" id="2_ry2kq"]
-[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://enemy_type.gd" id="3_e1t4n"]
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="3_e1t4n"]
 [ext_resource type="Resource" uid="uid://cxqn5aluyi08c" path="res://data/monsters/test_guy.tres" id="4_532ud"]
 
 [node name="Spawner" type="Node2D" unique_id=872089712]
