@@ -14,10 +14,15 @@ var level : int = 1:
 		%PickCard.show_options()
 
 
+var dead : bool = false
+
 var health : float = 100.0 :
 	set(value):
 		health = value
 		%Health.value = value
+		if health <= 0 and not dead:
+			dead = true
+			%DeathScreen.show_death()
 
 var XP : int = 0:
 	set(value):

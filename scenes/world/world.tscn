@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bldahf3sw418u" path="res://scenes/Player/Inventory/slot.tscn" id="13_srmg5"]
 [ext_resource type="Resource" uid="uid://m41bfsl5jyi8" path="res://data/weapons/wand.tres" id="14_umvgx"]
 [ext_resource type="PackedScene" uid="uid://bwqaxy8v5vuik" path="res://scenes/UpgradeScreen/pick_card.tscn" id="15_pick"]
+[ext_resource type="PackedScene" path="res://scenes/DeathScreen/death_screen.tscn" id="16_death"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlabj"]
 texture = ExtResource("2_5qq27")
@@ -415,6 +416,11 @@ grow_vertical = 0
 show_percentage = false
 
 [node name="PickCard" parent="CanvasLayer/Control" unique_id=1306509114 instance=ExtResource("15_pick")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="DeathScreen" parent="CanvasLayer/Control" unique_id=1067645547 instance=ExtResource("16_death")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
