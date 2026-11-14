@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bq3kbylbgqdbg"]
+
+[ext_resource type="Script" uid="uid://dqn26ou45tqpy" path="res://src/autoload/Transition/Transition.gd" id="1_trl"]
+[ext_resource type="Material" uid="uid://c45blnws6i24j" path="res://assets/shaders/TransitionShader/TransitonShaderMaterial.tres" id="2_mat"]
+
+[node name="Transition" type="CanvasLayer" unique_id=1107657353]
+process_mode = 3
+layer = 100
+script = ExtResource("1_trl")
+
+[node name="Wipe" type="ColorRect" parent="." unique_id=365595274]
+visible = false
+material = ExtResource("2_mat")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
