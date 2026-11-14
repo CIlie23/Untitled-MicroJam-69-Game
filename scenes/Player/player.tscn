@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://smshyma81c8p"]
+
+[ext_resource type="Script" uid="uid://dqmjiu56yr77r" path="res://scenes/Player/player.gd" id="1_1kbk7"]
+[ext_resource type="Texture2D" uid="uid://dh2gd88jtc743" path="res://icon.svg" id="1_cyojo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqy7p"]
+size = Vector2(65, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtxm7"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1599138642]
+script = ExtResource("1_1kbk7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1267344310]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_cyojo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438827166]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_fqy7p")
+
+[node name="SelfDamage" type="Area2D" parent="." unique_id=1287953737]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="SelfDamage" unique_id=2132734042]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_rtxm7")
+
+[node name="Health" type="ProgressBar" parent="." unique_id=717680029]
+unique_name_in_owner = true
+offset_left = -32.0
+offset_top = -44.0
+offset_right = 32.0
+offset_bottom = -37.0
+value = 100.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=413633811]
+autostart = true
+
+[connection signal="body_entered" from="SelfDamage" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

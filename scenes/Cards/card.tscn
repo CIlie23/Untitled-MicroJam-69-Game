@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b8ca5nnly4evs"]
+
+[ext_resource type="Shader" uid="uid://cwr85l0ys6rao" path="res://assets/shaders/dissolve.gdshader" id="1_8jfk0"]
+[ext_resource type="Script" uid="uid://dm2fws52ngxr4" path="res://scenes/Cards/card.gd" id="1_borcn"]
+[ext_resource type="Shader" uid="uid://lkuwaqgpubaf" path="res://scenes/Cards/card.gdshader" id="2_3drot"]
+[ext_resource type="Texture2D" uid="uid://cupglc11tjolx" path="res://assets/textures/Tiles_A_white.png" id="5_t5m02"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kntej"]
+seed = -15
+frequency = 0.0021
+fractal_octaves = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bboy4"]
+noise = SubResource("FastNoiseLite_kntej")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ph3s"]
+resource_local_to_scene = true
+shader = ExtResource("1_8jfk0")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_bboy4")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.03
+shader_parameter/burn_color = Color(1.5, 0.924, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7aqjh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cho03"]
+resource_local_to_scene = true
+shader = ExtResource("2_3drot")
+shader_parameter/rect_size = Vector2(152, 207)
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsth3"]
+size = Vector2(130, 175)
+
+[node name="Card" type="Button" unique_id=1547331308]
+material = SubResource("ShaderMaterial_3ph3s")
+custom_minimum_size = Vector2(152, 207)
+offset_right = 152.0
+offset_bottom = 207.0
+pivot_offset = Vector2(76, 103.5)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7aqjh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7aqjh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7aqjh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7aqjh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7aqjh")
+script = ExtResource("1_borcn")
+velocity_multiplier = 1.0
+
+[node name="Shadow" type="TextureRect" parent="." unique_id=668925553]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.168627)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_t5m02")
+expand_mode = 1
+
+[node name="CardTexture" type="TextureRect" parent="." unique_id=1856507305]
+material = SubResource("ShaderMaterial_cho03")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_t5m02")
+expand_mode = 1
+
+[node name="DestroyArea" type="Area2D" parent="." unique_id=1373982566]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyArea" unique_id=1406662349]
+position = Vector2(75, 104.5)
+shape = SubResource("RectangleShape2D_xsth3")
+disabled = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
