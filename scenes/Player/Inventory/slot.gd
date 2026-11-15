@@ -16,4 +16,12 @@ func _on_coldown_timeout() -> void:
 	var player = get_tree().get_first_node_in_group("Player")
 	if weapon and player:
 		coldown.wait_time = weapon.cooldown
-		weapon.activate(player, player.nearest_enemy, get_tree())
+		weapon.activate(player, _aim(player), get_tree())
+
+
+# In control the mouse picks the target; possessed, the other soul aims itself.
+# Returns a world position, which weapons accept in place of a node.
+func _aim(player):
+	if player.possessed:
+		return player.nearest_enemy
+	return player.get_global_mouse_position()

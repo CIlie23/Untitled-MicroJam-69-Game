@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cwgt61jv3p5in"]
+
+[ext_resource type="Texture2D" uid="uid://dh2gd88jtc743" path="res://icon.svg" id="1_hs23b"]
+[ext_resource type="Script" uid="uid://dea8qw2t0ky6g" path="res://scenes/Player/VersusBar/versus_bar.gd" id="1_p70bv"]
+
+[node name="VersusBar" type="Control" unique_id=1825016425]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+script = ExtResource("1_p70bv")
+
+[node name="Track" type="ColorRect" parent="." unique_id=933673108]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 9.0
+offset_bottom = 23.0
+grow_horizontal = 2
+color = Color(0.06, 0.05, 0.09, 0.85)
+
+[node name="SoulFill" type="ColorRect" parent="." unique_id=2100005121]
+layout_mode = 0
+offset_top = 9.0
+offset_bottom = 23.0
+color = Color(0.88235295, 0, 0, 1)
+
+[node name="PlayerFill" type="ColorRect" parent="." unique_id=998337844]
+layout_mode = 0
+offset_top = 9.0
+offset_bottom = 23.0
+color = Color(0.25, 0.72, 0.95, 1)
+
+[node name="PlayerPortrait" type="TextureRect" parent="." unique_id=1829000637]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 0
+offset_top = -6.0
+offset_right = 40.0
+offset_bottom = 34.0
+texture = ExtResource("1_hs23b")
+
+[node name="EnemyPortrait" type="TextureRect" parent="." unique_id=355817283]
+modulate = Color(0.62, 0.29, 0.88, 1)
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 0
+offset_top = -6.0
+offset_right = 40.0
+offset_bottom = 34.0
+texture = ExtResource("1_hs23b")

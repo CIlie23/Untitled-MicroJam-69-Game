@@ -37,7 +37,8 @@ grow_vertical = 2
 [node name="TITLE" type="Label" parent="Center" unique_id=1241905623]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "THIS IS A TITLE"
+text = "NECRO-RISE"
+horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Center" unique_id=704016729]
 layout_mode = 2

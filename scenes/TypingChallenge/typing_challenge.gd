@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 # Haunting prompt: the player loses control and must type one word per heart
 # before the clock runs out. Control and damage belong to the caller — this only

@@ -15,14 +15,17 @@ var level : int = 1:
 
 
 var dead : bool = false
+# the other soul is driving: no input, but weapons keep firing on their own
+var possessed : bool = false
 
 var health : float = 100.0 :
 	set(value):
 		health = value
 		%Health.value = value
-		if health <= 0 and not dead:
-			dead = true
-			%DeathScreen.show_death()
+		# out of health is not the end: your soul is spent, so the other one takes
+		# the body and you get one typing attempt to win it back
+		if health <= 0 and not possessed and not dead:
+			%VersusBar.player_downed()
 
 var XP : int = 0:
 	set(value):
@@ -49,6 +52,9 @@ func _update_hud() -> void:
 func _physics_process(delta):
 # enemies added to the world after the player, so this reset lands before they compare
 	nearest_enemy_distance = INF
+	if possessed:
+		velocity = Vector2.ZERO
+		return
 # setup direction of movement
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 # stop diagonal movement by listening for input then setting axis to zero
@@ -67,6 +73,18 @@ func _physics_process(delta):
 
 func take_damage(amount):
 	health -= amount
+	%VersusBar.player_hurt(amount) # damage is what lets the soul catch up
+
+
+# the real loss: failed the typing attempt, or the soul built a full-bar lead
+func die() -> void:
+	if dead:
+		return
+	dead = true
+	possessed = false
+	health = 0
+	%TypingChallenge.stop() # silent: the caller is not listening any more
+	%DeathScreen.show_death()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	# reduce player health based on enemy health
@@ -84,8 +102,14 @@ func check_XP():
 
 
 func gain_XP(amount):
+	# shared body: kills feed both souls, the player keeps the larger share.
+	# Possessed, the soul farms alone and the player stops levelling.
+	if possessed:
+		%VersusBar.soul_earned(amount)
+		return
 	XP += amount
 	total_XP += amount
+	%VersusBar.player_earned(amount)
 	check_XP()
 
 
