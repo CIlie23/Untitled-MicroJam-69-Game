@@ -10,7 +10,19 @@ extends Node2D
 @export var seconds_per_extra_word: float = 1.5
 @export var revive_health: float = 30.0 # you come back on this much after an exorcism
 
+var run_time := 0.0
+
 @onready var player: CharacterBody2D = $Player
+
+
+func _process(delta: float) -> void:
+	# delta, not wall clock: the clock stops whenever the tree is paused
+	run_time += delta
+	%timeLabel.text = _format_time(run_time)
+
+
+func _format_time(seconds: float) -> String:
+	return "%02d:%02d" % [floori(seconds / 60.0), int(seconds) % 60]
 
 
 func _ready() -> void:

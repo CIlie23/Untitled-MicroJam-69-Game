@@ -32,6 +32,8 @@ var XP : int = 0:
 		XP = value
 		_update_hud()
 var total_XP : int = 0
+# gems the body picked up this run, whoever was driving
+var souls : int = 0
 
 
 func _ready() -> void:
@@ -102,6 +104,8 @@ func check_XP():
 
 
 func gain_XP(amount):
+	souls += 1
+	%Souls.text = str(souls)
 	# shared body: kills feed both souls, the player keeps the larger share.
 	# Possessed, the soul farms alone and the player stops levelling.
 	if possessed:

@@ -18,6 +18,7 @@ autostart = true
 autostart = true
 
 [node name="Pattern" type="Timer" parent="." unique_id=477231456]
+wait_time = 10.0
 autostart = true
 
 [connection signal="timeout" from="Elite" to="." method="_on_elite_timeout"]
