@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardPickup" format=3]
 
 [ext_resource type="Script" path="res://src/entities/card_pickup.gd" id="1_card"]
-[ext_resource type="Texture2D" uid="uid://cupglc11tjolx" path="res://assets/textures/Tiles_A_white.png" id="2_card"]
+[ext_resource type="Texture2D" uid="uid://chtelb6ftd5m2" path="res://assets/textures/cardTexture.png" id="2_card"]
 
 [resource]
 script = ExtResource("1_card")

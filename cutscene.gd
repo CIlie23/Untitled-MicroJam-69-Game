@@ -100,6 +100,7 @@ func _leave_for_world() -> void:
 	arrow.visible = false
 	# the autoload outlives this scene, so a held timeline would follow us into the world
 	Dialogic.paused = false
+	Global.play_alive_intro = true
 	Transition.change_scene(WORLD)
 
 

@@ -6,6 +6,8 @@ extends Node2D
 
 signal soul_expelled
 
+const ALIVE_TIMELINE := "res://cutscene/alive.dtl"
+
 const ALIVE := "res://cutscene/alive.dtl"
 
 @export var words_per_haunt: int = 1
@@ -48,6 +50,9 @@ func _ready() -> void:
 	%Spawner.set_run_length(run_length)
 	run_time = test_start_time
 	%Spawner.elapsed = test_start_time * %Spawner.pace
+	if Global.play_alive_intro:
+		Global.play_alive_intro = false
+		play_alive_intro()
 	# in code, not the .tscn: a connection written for a direct child breaks
 	# silently if the node is ever reparented
 	%TypingChallenge.finished.connect(_on_typing_challenge_finished)
@@ -143,3 +148,14 @@ func _on_spawner_final_boss_died() -> void:
 	clear_enemies.call_deferred()
 	await get_tree().create_timer(victory_delay, false).timeout
 	%VictoryScreen.show_victory(run_stats())
+
+
+func play_alive_intro() -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
+	get_tree().paused = true
+	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	var layout: Node = Dialogic.start(ALIVE_TIMELINE)
+	layout.process_mode = Node.PROCESS_MODE_ALWAYS
+	await Dialogic.timeline_ended
+	get_tree().paused = false

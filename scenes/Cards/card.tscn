@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dm2fws52ngxr4" path="res://scenes/Cards/card.gd" id="1_borcn"]
 [ext_resource type="Shader" uid="uid://lkuwaqgpubaf" path="res://scenes/Cards/card.gdshader" id="2_3drot"]
 [ext_resource type="Texture2D" uid="uid://c3mdlqqo0cwoa" path="res://assets/enemies/placeholder/2.png" id="5_avk55"]
-[ext_resource type="Texture2D" uid="uid://cupglc11tjolx" path="res://assets/textures/Tiles_A_white.png" id="5_t5m02"]
+[ext_resource type="Texture2D" uid="uid://chtelb6ftd5m2" path="res://assets/textures/cardTexture.png" id="5_t5m02"]
 [ext_resource type="FontFile" uid="uid://bq5vkmfwi2qco" path="res://assets/fonts/Cairopixel.ttf" id="6_avk55"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kntej"]
@@ -78,20 +78,20 @@ expand_mode = 1
 [node name="TextureRect" type="TextureRect" parent="CardTexture" unique_id=1712857369]
 layout_mode = 0
 offset_left = 92.0
-offset_top = 100.0
+offset_top = 112.0
 offset_right = 212.0
-offset_bottom = 220.0
+offset_bottom = 232.0
 texture = ExtResource("5_avk55")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Title" type="Label" parent="CardTexture"]
 layout_mode = 0
-offset_left = 72.0
-offset_top = 20.0
-offset_right = 232.0
-offset_bottom = 96.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 36.0
+offset_top = 44.0
+offset_right = 268.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(1, 0.92, 0.78, 1)
 theme_override_font_sizes/font_size = 24
 text = "Item"
 vertical_alignment = 1
@@ -100,11 +100,11 @@ autowrap_mode = 3
 
 [node name="cardDescription" type="RichTextLabel" parent="CardTexture" unique_id=454837627]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 228.0
-offset_right = 288.0
-offset_bottom = 404.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+offset_left = 38.0
+offset_top = 240.0
+offset_right = 266.0
+offset_bottom = 380.0
+theme_override_colors/default_color = Color(1, 0.92, 0.78, 1)
 theme_override_fonts/normal_font = ExtResource("6_avk55")
 bbcode_enabled = true
 text = "Card description here
