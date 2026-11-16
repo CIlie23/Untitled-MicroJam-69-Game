@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://js6702crs7jm"]
+
+[ext_resource type="Script" uid="uid://drkkxs2uk0oap" path="res://cutscene.gd" id="1_ke2s0"]
+[ext_resource type="Texture2D" uid="uid://j3xjsnwl2g4p" path="res://assets/cutscene/black.png" id="2_gq24e"]
+[ext_resource type="PackedScene" uid="uid://cnsdi7tfbehsp" path="res://cutscene/tscn/cutscene_player.tscn" id="2_ur78k"]
+[ext_resource type="Texture2D" uid="uid://c1rcbm0o5rmux" path="res://assets/cutscene/emptySkeleton.png" id="3_4qoh6"]
+[ext_resource type="Texture2D" uid="uid://bcjxjw1dnpyxl" path="res://assets/cutscene/redSoul.png" id="5_4nkbl"]
+[ext_resource type="Texture2D" uid="uid://55c2e0e1jp7o" path="res://assets/cutscene/explosion.png" id="6_exp1o"]
+[ext_resource type="AudioStream" uid="uid://n7epu04k2nru" path="res://assets/cutscene/explosion.mp3" id="7_b00m5"]
+[ext_resource type="Texture2D" uid="uid://ckh5q6deqnd5j" path="res://assets/cutscene/arrow.png" id="8_4rr0w"]
+[ext_resource type="PackedScene" uid="uid://bmtf2gc6wamtn" path="res://scenes/TypingChallenge/typing_challenge.tscn" id="9_typ1n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqy7p"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_4nkbl"]
+resource_name = "redSoul_goIn"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4rv8"]
+_data = {
+&"redSoul_goIn": SubResource("Animation_4nkbl")
+}
+
+[node name="Cutscene" type="Node2D" unique_id=1106162617]
+script = ExtResource("1_ke2s0")
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=2074028927]
+position = Vector2(224, 88.00001)
+scale = Vector2(1275, 904.99994)
+texture = ExtResource("2_gq24e")
+
+[node name="CutscenePlayer" parent="." unique_id=1187011555 instance=ExtResource("2_ur78k")]
+position = Vector2(328, 176)
+
+[node name="Camera2D" type="Camera2D" parent="CutscenePlayer" unique_id=416137102]
+zoom = Vector2(2, 2)
+
+[node name="Skeleton" type="Sprite2D" parent="." unique_id=986243051]
+position = Vector2(92, 65)
+texture = ExtResource("3_4qoh6")
+
+[node name="Area2D" type="Area2D" parent="Skeleton" unique_id=1157977054]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Area2D" unique_id=702473361]
+position = Vector2(-2, 3)
+shape = SubResource("CircleShape2D_fqy7p")
+
+[node name="redSoul" type="Sprite2D" parent="." unique_id=540361231]
+position = Vector2(-564, 66)
+texture = ExtResource("5_4nkbl")
+
+[node name="Explosion" type="Sprite2D" parent="." unique_id=1108415963]
+visible = false
+position = Vector2(92, 65)
+texture = ExtResource("6_exp1o")
+hframes = 4
+vframes = 7
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=1108415964]
+stream = ExtResource("7_b00m5")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1108415965]
+visible = false
+texture = ExtResource("8_4rr0w")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1108415966]
+layer = 2
+
+[node name="TypingChallenge" parent="UI" unique_id=1649663135 instance=ExtResource("9_typ1n")]
+unique_name_in_owner = true
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2049528622]
+libraries/ = SubResource("AnimationLibrary_r4rv8")
+
+[connection signal="body_entered" from="Skeleton/Area2D" to="." method="_on_area_2d_body_entered"]

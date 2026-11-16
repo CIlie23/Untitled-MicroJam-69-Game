@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="PassiveItem" format=3]
+[gd_resource type="Resource" script_class="PassiveItem" format=3 uid="uid://lm0atx3mde6m"]
 
-[ext_resource type="Script" path="res://src/common/resources/passive_item.gd" id="1_passive"]
+[ext_resource type="Script" uid="uid://dc2w2xvbpubag" path="res://src/common/resources/passive_item.gd" id="1_passive"]
 [ext_resource type="Texture2D" uid="uid://dc077tdjx0foq" path="res://assets/textures/items/passives.png" id="2_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icon"]
@@ -9,8 +9,7 @@ region = Rect2(48, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_passive")
+stat = 3
 title = "Hollow Heart"
 texture = SubResource("AtlasTexture_icon")
 description = "More room for life in an empty chest."
-stat = 3
-amount_per_level = 0.1

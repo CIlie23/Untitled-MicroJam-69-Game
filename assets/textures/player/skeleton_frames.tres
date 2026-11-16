@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://do2m64it2b0h3"]
 
-[ext_resource type="Texture2D" path="res://assets/textures/player/cardsLarge_tilemap.png" id="30_sheet"]
+[ext_resource type="Texture2D" uid="uid://8yi4kjnqvwi7" path="res://assets/textures/player/cardsLarge_tilemap.png" id="30_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f0"]
 atlas = ExtResource("30_sheet")
@@ -45,7 +45,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 6.0
 }, {
@@ -59,8 +59,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 8.0
 }]
-

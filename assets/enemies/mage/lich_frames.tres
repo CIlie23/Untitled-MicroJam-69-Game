@@ -1,31 +1,7 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://ckmrkmyfc2nid"]
 
-[ext_resource type="Texture2D" path="res://assets/enemies/mage/spritesheet.png" id="1_move"]
-[ext_resource type="Texture2D" path="res://assets/enemies/mage_cast/spritesheet.png" id="2_cast"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_0"]
-atlas = ExtResource("1_move")
-region = Rect2(0, 0, 60, 70)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_1"]
-atlas = ExtResource("1_move")
-region = Rect2(60, 0, 60, 70)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_2"]
-atlas = ExtResource("1_move")
-region = Rect2(120, 0, 60, 70)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_3"]
-atlas = ExtResource("1_move")
-region = Rect2(180, 0, 60, 70)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_4"]
-atlas = ExtResource("1_move")
-region = Rect2(240, 0, 60, 70)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_5"]
-atlas = ExtResource("1_move")
-region = Rect2(300, 0, 60, 70)
+[ext_resource type="Texture2D" uid="uid://dlsayqkkw82j8" path="res://assets/enemies/mage/spritesheet.png" id="1_move"]
+[ext_resource type="Texture2D" uid="uid://byew3b6hi0heh" path="res://assets/enemies/mage_cast/spritesheet.png" id="2_cast"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cast_0"]
 atlas = ExtResource("2_cast")
@@ -67,31 +43,32 @@ atlas = ExtResource("2_cast")
 region = Rect2(1120, 0, 160, 98)
 margin = Rect2(0, 0, 92, 28)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_0"]
+atlas = ExtResource("1_move")
+region = Rect2(0, 0, 60, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_1"]
+atlas = ExtResource("1_move")
+region = Rect2(60, 0, 60, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_2"]
+atlas = ExtResource("1_move")
+region = Rect2(120, 0, 60, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_3"]
+atlas = ExtResource("1_move")
+region = Rect2(180, 0, 60, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_4"]
+atlas = ExtResource("1_move")
+region = Rect2(240, 0, 60, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_5"]
+atlas = ExtResource("1_move")
+region = Rect2(300, 0, 60, 70)
+
 [resource]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_5")
-}],
-"loop": true,
-"name": &"move",
-"speed": 6.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cast_0")
@@ -117,7 +94,30 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cast_7")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_5")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 6.0
 }]

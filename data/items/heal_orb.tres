@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="HealPickup" format=3]
+[gd_resource type="Resource" script_class="HealPickup" format=3 uid="uid://crwea504svyvd"]
 
-[ext_resource type="Script" path="res://src/entities/heal_pickup.gd" id="1_heal"]
+[ext_resource type="Script" uid="uid://dreolrj5qd3wd" path="res://src/entities/heal_pickup.gd" id="1_heal"]
 [ext_resource type="Texture2D" uid="uid://cw0mew684vutc" path="res://assets/textures/hearts.png" id="2_hearts"]
-[ext_resource type="AudioStream" path="res://assets/sounds/pickups/heal.ogg" id="9_snd"]
+[ext_resource type="AudioStream" uid="uid://duwkxbpkj2ea3" path="res://assets/sounds/pickups/heal.ogg" id="9_snd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_heart"]
 atlas = ExtResource("2_hearts")
@@ -15,5 +15,4 @@ icon = SubResource("AtlasTexture_heart")
 description = "Restores health."
 shine_scale = 0.8
 icon_scale = 1.6
-heal = 20.0
 pickup_sound = ExtResource("9_snd")

@@ -1,23 +1,7 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://d1sq1btn21sb"]
 
-[ext_resource type="Texture2D" path="res://assets/enemies/scorpion/walk.png" id="1_sheet"]
-[ext_resource type="Texture2D" path="res://assets/enemies/scorpion/sting.png" id="2_sheet"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_0"]
-atlas = ExtResource("1_sheet")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_1"]
-atlas = ExtResource("1_sheet")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_2"]
-atlas = ExtResource("1_sheet")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_move_3"]
-atlas = ExtResource("1_sheet")
-region = Rect2(144, 0, 48, 48)
+[ext_resource type="Texture2D" uid="uid://b3n2tv4n2rb30" path="res://assets/enemies/scorpion/walk.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://cai5r136a80ap" path="res://assets/enemies/scorpion/sting.png" id="2_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_attack_0"]
 atlas = ExtResource("2_sheet")
@@ -35,25 +19,24 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("2_sheet")
 region = Rect2(144, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(144, 0, 48, 48)
+
 [resource]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_move_3")
-}],
-"loop": true,
-"name": &"move",
-"speed": 8
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_attack_0")
@@ -67,7 +50,24 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_attack_3")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack",
-"speed": 10
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_3")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 8.0
 }]

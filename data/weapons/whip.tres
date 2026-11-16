@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Weapon" format=3]
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://cnds2uqfrss4i"]
 
-[ext_resource type="Script" path="res://scenes/Projectiles/weapon.gd" id="1_weapon"]
+[ext_resource type="Script" uid="uid://coyys82bg1ocy" path="res://scenes/Projectiles/weapon.gd" id="1_weapon"]
 [ext_resource type="Texture2D" uid="uid://bjactnmsg4aid" path="res://assets/textures/items/weapons_incons.png" id="2_sheet"]
 [ext_resource type="PackedScene" path="res://scenes/Weapons/Whip/whip.tscn" id="3_scene"]
 
@@ -11,11 +11,11 @@ region = Rect2(0, 16, 16, 16)
 [resource]
 script = ExtResource("1_weapon")
 scene = ExtResource("3_scene")
-title = "Whip"
-texture = SubResource("AtlasTexture_icon")
-description = "Your base attack. Lashes toward the aim."
-max_level = 1
 damage = 6.0
 cooldown = 1.2
 area = 135.0
 damage_per_level = 0.0
+title = "Whip"
+texture = SubResource("AtlasTexture_icon")
+description = "Your base attack. Lashes toward the aim."
+max_level = 1

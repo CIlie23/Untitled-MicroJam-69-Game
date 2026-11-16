@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Weapon" format=3]
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://cret1k6x7ht6c"]
 
-[ext_resource type="Script" path="res://scenes/Projectiles/weapon.gd" id="1_weapon"]
+[ext_resource type="Script" uid="uid://coyys82bg1ocy" path="res://scenes/Projectiles/weapon.gd" id="1_weapon"]
 [ext_resource type="Texture2D" uid="uid://bjactnmsg4aid" path="res://assets/textures/items/weapons_incons.png" id="2_sheet"]
 [ext_resource type="PackedScene" path="res://scenes/Weapons/Orbs/orbs.tscn" id="3_scene"]
 
@@ -11,9 +11,6 @@ region = Rect2(0, 0, 16, 16)
 [resource]
 script = ExtResource("1_weapon")
 scene = ExtResource("3_scene")
-title = "Soul Orbs"
-texture = SubResource("AtlasTexture_icon")
-description = "Orbs circle you for a while, then recharge."
 damage = 8.0
 cooldown = 3.0
 speed = 180.0
@@ -24,3 +21,6 @@ damage_per_level = 2.0
 cooldown_per_level = 0.04
 speed_per_level = 20.0
 amount_levels = Array[int]([3, 6, 9])
+title = "Soul Orbs"
+texture = SubResource("AtlasTexture_icon")
+description = "Orbs circle you for a while, then recharge."

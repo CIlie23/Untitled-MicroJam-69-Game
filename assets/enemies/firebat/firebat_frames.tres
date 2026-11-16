@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cdrv2ls1uixcb"]
 
-[ext_resource type="Texture2D" path="res://assets/enemies/firebat/spritesheet.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://ddn8v6m46sg5k" path="res://assets/enemies/firebat/spritesheet.png" id="1_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_move_0"]
 atlas = ExtResource("1_sheet")
@@ -33,7 +33,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_move_3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"move",
-"speed": 12
+"speed": 12.0
 }]

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="PassiveItem" format=3]
+[gd_resource type="Resource" script_class="PassiveItem" format=3 uid="uid://cyetwfnff1wl0"]
 
-[ext_resource type="Script" path="res://src/common/resources/passive_item.gd" id="1_passive"]
+[ext_resource type="Script" uid="uid://dc2w2xvbpubag" path="res://src/common/resources/passive_item.gd" id="1_passive"]
 [ext_resource type="Texture2D" uid="uid://dc077tdjx0foq" path="res://assets/textures/items/passives.png" id="2_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icon"]
@@ -9,8 +9,8 @@ region = Rect2(0, 16, 16, 16)
 
 [resource]
 script = ExtResource("1_passive")
+stat = 5
+amount_per_level = 0.08
 title = "Grave Dust"
 texture = SubResource("AtlasTexture_icon")
 description = "Hits harder."
-stat = 5
-amount_per_level = 0.08

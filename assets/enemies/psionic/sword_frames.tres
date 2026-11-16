@@ -1,19 +1,7 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://c17a7ab02ekra"]
 
-[ext_resource type="Texture2D" path="res://assets/enemies/psionic/sword_generation.png" id="1_sheet"]
-[ext_resource type="Texture2D" path="res://assets/enemies/psionic/sword.png" id="2_sheet"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_generate_0"]
-atlas = ExtResource("1_sheet")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_generate_1"]
-atlas = ExtResource("1_sheet")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_generate_2"]
-atlas = ExtResource("1_sheet")
-region = Rect2(128, 0, 64, 64)
+[ext_resource type="Texture2D" uid="uid://fumog7fw0f2t" path="res://assets/enemies/psionic/sword_generation.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://mh3r4f3kkuex" path="res://assets/enemies/psionic/sword.png" id="2_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fly_0"]
 atlas = ExtResource("2_sheet")
@@ -39,22 +27,20 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("2_sheet")
 region = Rect2(320, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_generate_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_generate_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_generate_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(128, 0, 64, 64)
+
 [resource]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_generate_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_generate_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_generate_2")
-}],
-"loop": false,
-"name": &"generate",
-"speed": 6
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fly_0")
@@ -74,7 +60,21 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fly_5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fly",
-"speed": 12
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_generate_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_generate_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_generate_2")
+}],
+"loop": 0,
+"name": &"generate",
+"speed": 6.0
 }]

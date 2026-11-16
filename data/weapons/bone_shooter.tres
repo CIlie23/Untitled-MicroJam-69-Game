@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Weapon" format=3]
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://c0rhpdosw6bmm"]
 
-[ext_resource type="Script" path="res://scenes/Projectiles/weapon.gd" id="1_weapon"]
+[ext_resource type="Script" uid="uid://coyys82bg1ocy" path="res://scenes/Projectiles/weapon.gd" id="1_weapon"]
 [ext_resource type="Texture2D" uid="uid://bjactnmsg4aid" path="res://assets/textures/items/weapons_incons.png" id="2_sheet"]
 [ext_resource type="PackedScene" path="res://scenes/Weapons/BoneShooter/bone_shooter.tscn" id="3_scene"]
 
@@ -11,9 +11,6 @@ region = Rect2(32, 0, 16, 16)
 [resource]
 script = ExtResource("1_weapon")
 scene = ExtResource("3_scene")
-title = "Bone Shooter"
-texture = SubResource("AtlasTexture_icon")
-description = "Fires bones toward the aim."
 damage = 10.0
 cooldown = 1.5
 speed = 350.0
@@ -22,3 +19,6 @@ damage_per_level = 3.0
 cooldown_per_level = 0.05
 speed_per_level = 25.0
 amount_levels = Array[int]([3, 6, 9])
+title = "Bone Shooter"
+texture = SubResource("AtlasTexture_icon")
+description = "Fires bones toward the aim."

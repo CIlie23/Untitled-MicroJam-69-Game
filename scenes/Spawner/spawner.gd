@@ -135,4 +135,3 @@ func _on_unique_timeout() -> void:
 		return
 	spawn(get_random_position(), false, unique_bosses[unique_index % unique_bosses.size()])
 	unique_index += 1
-

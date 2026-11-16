@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cnsdi7tfbehsp"]
+
+[ext_resource type="Script" uid="uid://gaqbu8slv1nc" path="res://cutscene_player.gd" id="1_qbc3d"]
+[ext_resource type="Texture2D" uid="uid://oqa0i82kwc8e" path="res://assets/cutscene/blueSoul.png" id="2_684tp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqy7p"]
+
+[node name="CutscenePlayer" type="CharacterBody2D" unique_id=1187011555]
+script = ExtResource("1_qbc3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2119149323]
+texture = ExtResource("2_684tp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=240004818]
+shape = SubResource("RectangleShape2D_fqy7p")

@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://e3yb4yxsly0c"]
 
-[ext_resource type="Texture2D" path="res://assets/enemies/battering_ram/run.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://dmypnsf28lams" path="res://assets/enemies/battering_ram/run.png" id="1_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_move_0"]
 atlas = ExtResource("1_sheet")
@@ -61,7 +61,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_move_7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"move",
-"speed": 12
+"speed": 12.0
 }]

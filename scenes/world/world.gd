@@ -6,6 +6,8 @@ extends Node2D
 
 signal soul_expelled
 
+const ALIVE := "res://cutscene/alive.dtl"
+
 @export var words_per_haunt: int = 1
 @export var words_per_level: int = 4 # one more word per this many levels, past level 3
 @export var max_words: int = 5
