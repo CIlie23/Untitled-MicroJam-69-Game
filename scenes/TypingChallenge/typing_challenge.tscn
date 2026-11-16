@@ -92,7 +92,7 @@ vertical_alignment = 1
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=872278213]
 layout_mode = 2
 size_flags_horizontal = 4
-placeholder_text = "Type here..."
+placeholder_text = "Exorcise..."
 keep_editing_on_text_submit = true
 expand_to_text_length = true
 context_menu_enabled = false

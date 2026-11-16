@@ -21,6 +21,7 @@ const ALIVE := "res://cutscene/alive.dtl"
 @export var test_start_time: float = 0.0
 @export var victory_delay: float = 15.0
 @export var music_fade_time: float = 1.5
+@export var dialogue_gap_above_hud: float = 12.0
 
 var run_time := 0.0
 var soul_gone := false
@@ -157,5 +158,15 @@ func play_alive_intro() -> void:
 	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
 	var layout: Node = Dialogic.start(ALIVE_TIMELINE)
 	layout.process_mode = Node.PROCESS_MODE_ALWAYS
+	if not layout.is_node_ready():
+		await layout.ready
+	lift_dialogue_above_hud(layout)
 	await Dialogic.timeline_ended
 	get_tree().paused = false
+
+
+func lift_dialogue_above_hud(layout: Node) -> void:
+	for layer in layout.get_layers():
+		if "box_margin_bottom" in layer:
+			layer.box_margin_bottom = int(%BottomBars.size.y + dialogue_gap_above_hud)
+			layer._apply_box_settings()
