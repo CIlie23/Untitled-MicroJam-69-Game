@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bofandroowcr1"
+path="res://.godot/imported/4. Cursed Citadel (Intro).mp3-15de7c44a3f350aa54d0ee4deab7412e.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/game_OST/Loops mp3/4. Cursed Citadel (Intro).mp3"
+dest_files=["res://.godot/imported/4. Cursed Citadel (Intro).mp3-15de7c44a3f350aa54d0ee4deab7412e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

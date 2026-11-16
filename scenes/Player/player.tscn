@@ -1,28 +1,62 @@
 [gd_scene format=3 uid="uid://smshyma81c8p"]
 
 [ext_resource type="Script" uid="uid://dqmjiu56yr77r" path="res://scenes/Player/player.gd" id="1_1kbk7"]
-[ext_resource type="Texture2D" uid="uid://dh2gd88jtc743" path="res://icon.svg" id="1_cyojo"]
 
+[ext_resource type="Script" path="res://scenes/Player/Stats/player_stats.gd" id="10_stats"]
+[ext_resource type="Script" path="res://src/common/resources/item.gd" id="23_item"]
+[ext_resource type="Script" path="res://scenes/Player/Inventory/inventory.gd" id="11_inv"]
+[ext_resource type="Resource" path="res://data/weapons/whip.tres" id="12_whip"]
+[ext_resource type="Resource" path="res://data/weapons/garlic.tres" id="13_garlic"]
+[ext_resource type="Resource" path="res://data/weapons/orbs.tres" id="14_orbs"]
+[ext_resource type="Resource" path="res://data/weapons/bone_shooter.tres" id="15_bone"]
+[ext_resource type="Resource" path="res://data/items/passives/bone_marrow.tres" id="16_p"]
+[ext_resource type="Resource" path="res://data/items/passives/grave_boots.tres" id="17_p"]
+[ext_resource type="Resource" path="res://data/items/passives/raven_feather.tres" id="18_p"]
+[ext_resource type="Resource" path="res://data/items/passives/hollow_heart.tres" id="19_p"]
+[ext_resource type="Resource" path="res://data/items/passives/soul_lantern.tres" id="20_p"]
+[ext_resource type="Resource" path="res://data/items/passives/grave_dust.tres" id="21_p"]
+[ext_resource type="Resource" path="res://data/items/passives/cursed_dice.tres" id="22_p"]
+[ext_resource type="Resource" path="res://data/items/passives/grave_magnet.tres" id="24_p"]
+[ext_resource type="Resource" path="res://data/items/passives/coffin_nail.tres" id="25_p"]
+[ext_resource type="Resource" path="res://data/items/passives/embalming_fluid.tres" id="26_p"]
+[ext_resource type="SpriteFrames" path="res://assets/textures/player/skeleton_frames.tres" id="30_frames"]
+[ext_resource type="AudioStream" path="res://assets/sounds/pickups/level_up.ogg" id="34_levelup"]
+[ext_resource type="Shader" path="res://scenes/Player/Sprite/soul_tint.gdshader" id="31_tint"]
+[ext_resource type="Script" path="res://scenes/Player/Sprite/skeleton_sprite.gd" id="32_sprite"]
+[ext_resource type="Script" path="res://scenes/Player/SoulBrain/soul_brain.gd" id="33_brain"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqy7p"]
 size = Vector2(65, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtxm7"]
+size = Vector2(44, 56)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fqy7p"]
-radius = 114.48144
+resource_local_to_scene = true
+radius = 114.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tint"]
+resource_local_to_scene = true
+shader = ExtResource("31_tint")
 
 [node name="Player" type="CharacterBody2D" unique_id=1599138642 groups=["Player"]]
+collision_mask = 5
 script = ExtResource("1_1kbk7")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1267344310]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_cyojo")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_tint")
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("30_frames")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("32_sprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438827166]
 position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_fqy7p")
 
 [node name="SelfDamage" type="Area2D" parent="." unique_id=1287953737]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 2
 
@@ -30,23 +64,54 @@ collision_mask = 2
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_rtxm7")
 
-[node name="Health" type="ProgressBar" parent="." unique_id=717680029]
-unique_name_in_owner = true
-offset_left = -32.0
-offset_top = -44.0
-offset_right = 32.0
-offset_bottom = -37.0
-value = 100.0
-show_percentage = false
+[node name="ContactDamage" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
 
 [node name="Timer" type="Timer" parent="." unique_id=413633811]
 autostart = true
 
 [node name="Magnet" type="Area2D" parent="." unique_id=1432185095]
+collision_layer = 0
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet" unique_id=1848903213]
+[node name="MagnetShape" type="CollisionShape2D" parent="Magnet" unique_id=1848903213]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_fqy7p")
 
+[node name="SoulBrain" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("33_brain")
+
+[node name="Stats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_stats")
+
+[node name="Inventory" type="Node2D" parent="." node_paths=PackedStringArray("player", "stats")]
+unique_name_in_owner = true
+script = ExtResource("11_inv")
+player = NodePath("..")
+stats = NodePath("../Stats")
+base_attack = ExtResource("12_whip")
+pool = Array[ExtResource("23_item")]([ExtResource("13_garlic"), ExtResource("14_orbs"), ExtResource("15_bone"), ExtResource("16_p"), ExtResource("17_p"), ExtResource("18_p"), ExtResource("19_p"), ExtResource("20_p"), ExtResource("21_p"), ExtResource("22_p"), ExtResource("24_p"), ExtResource("25_p"), ExtResource("26_p")])
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -14.0
+max_polyphony = 4
+bus = &"SFX"
+
+[node name="LevelUpSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("34_levelup")
+volume_db = -6.0
+bus = &"SFX"
+
 [connection signal="body_entered" from="SelfDamage" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ContactDamage" to="." method="_on_contact_damage_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]
+[connection signal="changed" from="Stats" to="." method="_on_stats_changed"]
+[connection signal="possession_changed" from="." to="Sprite" method="_on_player_possession_changed"]
+[connection signal="hurt" from="." to="Sprite" method="_on_player_hurt"]
+[connection signal="leveled_up" from="." to="LevelUpSound" method="play" binds= [0.0]]

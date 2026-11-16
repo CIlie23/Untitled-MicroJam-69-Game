@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bpmek4l4uwytn"
+path="res://.godot/imported/2. Shadowforge Convergence (Intro).mp3-a204a39fe9b8fdbe2e685f4f7fcdc230.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/game_OST/Loops mp3/2. Shadowforge Convergence (Intro).mp3"
+dest_files=["res://.godot/imported/2. Shadowforge Convergence (Intro).mp3-a204a39fe9b8fdbe2e685f4f7fcdc230.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -13,6 +13,8 @@ var can_follow : bool = false
  
 func _ready():
 	$Sprite2D.texture = type.icon
+	$Sprite2D.scale = Vector2.ONE * type.icon_scale
+	%Shine.scale = Vector2.ONE * type.shine_scale
  
 func _on_body_entered(_body):
 	type.activate()

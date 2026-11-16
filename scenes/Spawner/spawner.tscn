@@ -3,24 +3,32 @@
 [ext_resource type="Script" uid="uid://b1cbccdfels6p" path="res://scenes/Spawner/spawner.gd" id="1_u111k"]
 [ext_resource type="PackedScene" uid="uid://2hp54xbjqdyl" path="res://scenes/Enemy/enemy.tscn" id="2_ry2kq"]
 [ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="3_e1t4n"]
-[ext_resource type="Resource" uid="uid://cxqn5aluyi08c" path="res://data/monsters/test_guy.tres" id="4_532ud"]
 
 [node name="Spawner" type="Node2D" unique_id=872089712]
 script = ExtResource("1_u111k")
 enemy = ExtResource("2_ry2kq")
-enemy_types = Array[ExtResource("3_e1t4n")]([ExtResource("4_532ud")])
 
 [node name="Elite" type="Timer" parent="." unique_id=1918240111]
-wait_time = 9.0
+unique_name_in_owner = true
+wait_time = 138.0
 autostart = true
 
 [node name="Normal" type="Timer" parent="." unique_id=1673049972]
+unique_name_in_owner = true
+wait_time = 2.5
 autostart = true
 
 [node name="Pattern" type="Timer" parent="." unique_id=477231456]
-wait_time = 10.0
+unique_name_in_owner = true
+wait_time = 45.0
 autostart = true
 
+[node name="Unique" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 300.0
+autostart = true
+
+[connection signal="timeout" from="Unique" to="." method="_on_unique_timeout"]
 [connection signal="timeout" from="Elite" to="." method="_on_elite_timeout"]
 [connection signal="timeout" from="Normal" to="." method="_on_normal_timeout"]
 [connection signal="timeout" from="Pattern" to="." method="_on_pattern_timeout"]

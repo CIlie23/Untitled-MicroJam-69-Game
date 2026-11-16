@@ -11,8 +11,30 @@ var tween_rot: Tween
 var tween_hover: Tween
 var tween_destroy: Tween
 
+@export var trick_text: String = "No treats - tricks instead for you!"
+@export var trick_texture: Texture2D
+
 @onready var card_texture: TextureRect = $CardTexture
 @onready var shadow = $Shadow
+@onready var item_icon: TextureRect = $CardTexture/TextureRect
+@onready var title: Label = $CardTexture/Title
+@onready var description: RichTextLabel = $CardTexture/cardDescription
+
+
+func show_item(item: Item, next_level: int) -> void:
+	item_icon.texture = item.texture
+	title.text = item.title
+	description.text = "[b]%s[/b]\n%s" % [level_tag(next_level), item.card_text(next_level)]
+
+
+func show_trick() -> void:
+	item_icon.texture = trick_texture
+	title.text = ""
+	description.text = trick_text
+
+
+func level_tag(level: int) -> String:
+	return "NEW!" if level == 1 else "LV %d" % level
 
 func _ready() -> void:
 	# Convert to radians because lerp_angle is using that

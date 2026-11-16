@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/Enemy/Abilities/spawn_voice.gd" id="1_voice"]
+[ext_resource type="AudioStream" path="res://assets/sounds/lich/lich laugh.wav" id="2_laugh"]
+
+[node name="LichLaugh" type="AudioStreamPlayer"]
+stream = ExtResource("2_laugh")
+volume_db = 6.0
+autoplay = true
+bus = &"SFX"
+script = ExtResource("1_voice")

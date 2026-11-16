@@ -1,0 +1,58 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/MenuScenes/ModeSelect/mode_select.gd" id="1_mode"]
+[ext_resource type="PackedScene" path="res://scenes/MenuScenes/Overlay/overlay_background.tscn" id="2_bg"]
+
+[node name="ModeSelect" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mode")
+
+[node name="OverlayBackground" parent="." instance=ExtResource("2_bg")]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -160.0
+offset_right = 250.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "CHOOSE YOUR RUN"
+horizontal_alignment = 1
+
+[node name="Long" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "LONG - 30 MIN"
+
+[node name="Short" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "SHORT - 15 MIN"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "BACK"
+
+[connection signal="pressed" from="VBoxContainer/Long" to="." method="_on_mode_pressed" binds= [1800.0]]
+[connection signal="pressed" from="VBoxContainer/Short" to="." method="_on_mode_pressed" binds= [900.0]]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

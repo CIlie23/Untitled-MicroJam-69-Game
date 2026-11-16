@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/Effects/ParticleFX/particle_fx.gd" id="1_fx"]
+[ext_resource type="PackedScene" path="res://scenes/Effects/Particles/dust.tscn" id="2_dust"]
+[ext_resource type="PackedScene" path="res://scenes/Effects/Particles/blood.tscn" id="3_blood"]
+[ext_resource type="PackedScene" path="res://scenes/Effects/Particles/spark.tscn" id="4_spark"]
+
+[node name="ParticleFX" type="Node2D" groups=["particle_fx"]]
+y_sort_enabled = true
+script = ExtResource("1_fx")
+effects = Dictionary[StringName, PackedScene]({
+&"blood": ExtResource("3_blood"),
+&"dust": ExtResource("2_dust"),
+&"spark": ExtResource("4_spark")
+})

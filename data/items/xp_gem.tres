@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="Gem" format=3]
 
 [ext_resource type="Script" uid="uid://dicgu0tih2yrr" path="res://src/entities/Gem.gd" id="1_gem"]
-[ext_resource type="Texture2D" uid="uid://dh2gd88jtc743" path="res://icon.svg" id="2_icon"]
+[ext_resource type="Texture2D" uid="uid://cfccevcvwhx3" path="res://assets/textures/soulDrop.png" id="2_icon"]
+[ext_resource type="AudioStream" path="res://assets/sounds/pickups/gem.ogg" id="9_snd"]
 
 [resource]
 script = ExtResource("1_gem")
 title = "XP Gem"
 icon = ExtResource("2_icon")
 description = "Grants experience."
-XP = 1.0
+XP = 2.0
 metadata/_custom_type_script = "uid://dicgu0tih2yrr"
+shine_scale = 0.6
+icon_scale = 2.0
+pickup_sound = ExtResource("9_snd")

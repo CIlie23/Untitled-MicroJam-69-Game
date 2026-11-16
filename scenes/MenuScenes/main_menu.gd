@@ -1,13 +1,21 @@
 extends Control
 
 
+func _ready() -> void:
+	%Quit.visible = not OS.has_feature("web")
+
+
 func _on_play_pressed() -> void:
-	Transition.change_scene("res://scenes/world/world.tscn")
+	%ModeSelect.open()
 
 
 func _on_options_pressed() -> void:
-	Transition.change_scene("res://scenes/settings_menu.tscn")
+	%SettingsMenu.open()
 
 
 func _on_credits_pressed() -> void:
-	Transition.change_scene("res://scenes/credits_menu.tscn")
+	%Credits.open()
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

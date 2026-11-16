@@ -1,0 +1,59 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/PauseMenu/InventoryPanel/inventory_panel.gd" id="1_panel"]
+[ext_resource type="PackedScene" path="res://scenes/PauseMenu/InventoryPanel/item_entry.tscn" id="2_entry"]
+[ext_resource type="Texture2D" uid="uid://bh7c7af86miyk" path="res://assets/textures/skull.png" id="3_icon"]
+
+[node name="InventoryPanel" type="PanelContainer"]
+offset_left = 16.0
+offset_top = 16.0
+script = ExtResource("1_panel")
+entry_scene = ExtResource("2_entry")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Character" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="VBoxContainer/Character"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Info" type="VBoxContainer" parent="VBoxContainer/Character"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Name" type="Label" parent="VBoxContainer/Character/Info"]
+layout_mode = 2
+text = "Worthless Skelly"
+
+[node name="Level" type="Label" parent="VBoxContainer/Character/Info"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LVL 1"
+
+[node name="Stats" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Stats"
+
+[node name="WeaponsLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Weapons"
+
+[node name="Weapons" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PassivesLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Items"
+
+[node name="Passives" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2

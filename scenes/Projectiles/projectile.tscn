@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://cowpl2gpevdnf"]
 
 [ext_resource type="Script" uid="uid://iwo6tp2fuhqh" path="res://scenes/Projectiles/projectile.gd" id="1_b3dia"]
+[ext_resource type="Texture2D" uid="uid://dkevr7pk6cvq" path="res://assets/textures/bone_projectile.png" id="2_bone"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fqy7p"]
-size = Vector2(10, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k86c5"]
 radius = 8.0
@@ -45,11 +44,13 @@ turbulence_enabled = true
 turbulence_influence_max = 0.29000002
 
 [node name="Projectile" type="Area2D" unique_id=902266689]
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_b3dia")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251565968]
-texture = SubResource("PlaceholderTexture2D_fqy7p")
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+texture = ExtResource("2_bone")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=82397723]
 shape = SubResource("CircleShape2D_k86c5")

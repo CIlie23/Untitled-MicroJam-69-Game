@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bg2f8k3jmvdk5"
+path="res://.godot/imported/1. Whispers of the Abyss (Loop).mp3-d3dd7e06ea91aeefe7bfab87951a95a8.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/game_OST/Loops mp3/1. Whispers of the Abyss (Loop).mp3"
+dest_files=["res://.godot/imported/1. Whispers of the Abyss (Loop).mp3-d3dd7e06ea91aeefe7bfab87951a95a8.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

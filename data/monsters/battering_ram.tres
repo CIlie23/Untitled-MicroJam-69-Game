@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Enemy" format=3]
+
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/battering_ram/battering_ram_frames.tres" id="2_frames"]
+[ext_resource type="AudioStream" path="res://assets/sounds/battering_ram/attack_set.tres" id="3_attack"]
+[ext_resource type="AudioStream" path="res://assets/sounds/battering_ram/death_set.tres" id="4_death"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Movement/charge_movement.tscn" id="6_move"]
+
+[resource]
+script = ExtResource("1_enemy")
+title = "Battering Ram"
+sprite_frames = ExtResource("2_frames")
+size = 1.0
+collision_radius = 20.0
+health = 40.0
+damage = 9.0
+attack_interval = 1.5
+speed = 380.0
+spawn_weight = 0.3
+unlock_time = 720.0
+movement = ExtResource("6_move")
+attack_sound = ExtResource("3_attack")
+death_sound = ExtResource("4_death")

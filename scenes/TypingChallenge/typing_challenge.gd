@@ -64,8 +64,13 @@ func start(words_needed: int = 1, duration: float = -1.0) -> bool:
 # Typing is the whole mechanic, so losing the caret mid-challenge means losing.
 # Covers clicks outside the field and any Enter the scene settings miss.
 func _regrab_focus() -> void:
-	if running:
+	if running and not get_tree().paused:
 		line_edit.grab_focus.call_deferred()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_UNPAUSED:
+		_regrab_focus()
 
 
 func stop() -> void:

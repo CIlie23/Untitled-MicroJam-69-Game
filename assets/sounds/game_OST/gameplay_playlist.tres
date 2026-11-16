@@ -1,0 +1,21 @@
+[gd_resource type="AudioStreamPlaylist" format=3]
+
+[ext_resource type="AudioStream" path="res://assets/sounds/game_OST/bg_music/Ironchest_dungeon001.wav" id="1_t"]
+[ext_resource type="AudioStream" path="res://assets/sounds/game_OST/bg_music/Ironchest_dungeon004.wav" id="2_t"]
+[ext_resource type="AudioStream" path="res://assets/sounds/game_OST/bg_music/Ironchest_dungeon005.wav" id="3_t"]
+[ext_resource type="AudioStream" path="res://assets/sounds/game_OST/bg_music/Ironchest_dungeon006.wav" id="4_t"]
+[ext_resource type="AudioStream" path="res://assets/sounds/game_OST/bg_music/Ironchest_dungeon007.wav" id="5_t"]
+[ext_resource type="AudioStream" path="res://assets/sounds/game_OST/bg_music/Ironchest_dungeon008.wav" id="6_t"]
+[ext_resource type="AudioStream" path="res://assets/sounds/game_OST/bg_music/Ironchest_dungeon010.wav" id="7_t"]
+
+[resource]
+shuffle = true
+fade_time = 2.0
+stream_count = 7
+stream_0 = ExtResource("1_t")
+stream_1 = ExtResource("2_t")
+stream_2 = ExtResource("3_t")
+stream_3 = ExtResource("4_t")
+stream_4 = ExtResource("5_t")
+stream_5 = ExtResource("6_t")
+stream_6 = ExtResource("7_t")

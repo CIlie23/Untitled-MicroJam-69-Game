@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://cwr85l0ys6rao" path="res://assets/shaders/dissolve.gdshader" id="1_8jfk0"]
 [ext_resource type="Script" uid="uid://dm2fws52ngxr4" path="res://scenes/Cards/card.gd" id="1_borcn"]
 [ext_resource type="Shader" uid="uid://lkuwaqgpubaf" path="res://scenes/Cards/card.gdshader" id="2_3drot"]
-[ext_resource type="Texture2D" uid="uid://c3mdlqqo0cwoa" path="res://assets/monsters/2.png" id="5_avk55"]
+[ext_resource type="Texture2D" uid="uid://c3mdlqqo0cwoa" path="res://assets/enemies/placeholder/2.png" id="5_avk55"]
 [ext_resource type="Texture2D" uid="uid://cupglc11tjolx" path="res://assets/textures/Tiles_A_white.png" id="5_t5m02"]
 [ext_resource type="FontFile" uid="uid://bq5vkmfwi2qco" path="res://assets/fonts/Cairopixel.ttf" id="6_avk55"]
 
@@ -28,7 +28,7 @@ shader_parameter/burn_color = Color(1.5, 0.924, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cho03"]
 resource_local_to_scene = true
 shader = ExtResource("2_3drot")
-shader_parameter/rect_size = Vector2(152, 207)
+shader_parameter/rect_size = Vector2(304, 414)
 shader_parameter/fov = 90.0
 shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
@@ -37,10 +37,10 @@ shader_parameter/inset = 0.0
 
 [node name="Card" type="Button" unique_id=1547331308]
 material = SubResource("ShaderMaterial_3ph3s")
-custom_minimum_size = Vector2(152, 207)
-offset_right = 152.0
-offset_bottom = 207.0
-pivot_offset = Vector2(76, 103.5)
+custom_minimum_size = Vector2(304, 414)
+offset_right = 304.0
+offset_bottom = 414.0
+pivot_offset = Vector2(152, 207.0)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_7aqjh")
@@ -57,8 +57,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 24.0
-offset_bottom = 24.0
+offset_top = 48.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_t5m02")
@@ -77,33 +77,39 @@ expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="CardTexture" unique_id=1712857369]
 layout_mode = 0
-offset_left = 59.0
-offset_top = 83.0
-offset_right = 99.0
-offset_bottom = 123.0
+offset_left = 92.0
+offset_top = 100.0
+offset_right = 212.0
+offset_bottom = 220.0
 texture = ExtResource("5_avk55")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="CardTexture"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 20.0
+offset_right = 232.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Item"
+vertical_alignment = 1
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="cardDescription" type="RichTextLabel" parent="CardTexture" unique_id=454837627]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 127.0
-offset_right = 149.0
-offset_bottom = 202.0
+offset_left = 16.0
+offset_top = 228.0
+offset_right = 288.0
+offset_bottom = 404.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_avk55")
 bbcode_enabled = true
 text = "Card description here
 [color=green]+ 10[/color] Something
 [color=red]- 10[/color] Something"
-
-[node name="cardCost" type="Label" parent="CardTexture" unique_id=1330241335]
-layout_mode = 0
-offset_left = 101.0
-offset_top = 1.0
-offset_right = 144.0
-offset_bottom = 21.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "COST"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

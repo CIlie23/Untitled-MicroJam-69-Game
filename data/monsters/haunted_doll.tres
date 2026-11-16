@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Enemy" format=3]
+
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/haunted_doll/haunted_doll_frames.tres" id="2_frames"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_attack_set.tres" id="3_attack"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_death_set.tres" id="4_death"]
+
+[resource]
+script = ExtResource("1_enemy")
+title = "Haunted Doll"
+sprite_frames = ExtResource("2_frames")
+size = 1.0
+collision_radius = 12.0
+health = 4.0
+damage = 2.5
+attack_interval = 0.8
+speed = 135.0
+spawn_weight = 0.8
+unlock_time = 0.0
+attack_sound = ExtResource("3_attack")
+death_sound = ExtResource("4_death")

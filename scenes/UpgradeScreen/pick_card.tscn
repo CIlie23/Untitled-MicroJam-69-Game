@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://cwr85l0ys6rao" path="res://assets/shaders/dissolve.gdshader" id="2_hsfdm"]
 [ext_resource type="FontFile" uid="uid://dsiklsmlhntq1" path="res://assets/fonts/PixeloidSans.ttf" id="3_e3vyn"]
 [ext_resource type="Script" uid="uid://bqol35vk30aq0" path="res://scenes/UpgradeScreen/pick_card.gd" id="4_pick"]
+[ext_resource type="AudioStream" path="res://assets/sounds/cardFlip.mp3" id="5_flip"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kntej"]
 seed = -15
@@ -57,45 +58,87 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=215723643]
-custom_minimum_size = Vector2(152, 207)
-custom_maximum_size = Vector2(-1, 207)
+custom_minimum_size = Vector2(304, 414)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -14.0
-offset_top = -88.5
-offset_right = 14.0
-offset_bottom = 118.5
+offset_left = -28.0
+offset_top = -220.0
+offset_right = 28.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 20
+theme_override_constants/separation = 40
 alignment = 1
 
-[node name="Card" parent="HBoxContainer" unique_id=1547331308 instance=ExtResource("1_gwp4k")]
+[node name="Column" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Card" parent="HBoxContainer/Column" instance=ExtResource("1_gwp4k")]
 material = SubResource("ShaderMaterial_hsfdm")
 layout_mode = 2
 
-[node name="Card2" parent="HBoxContainer" unique_id=623060161 instance=ExtResource("1_gwp4k")]
+[node name="Reroll" type="Button" parent="HBoxContainer/Column"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "REROLL"
+
+[node name="Column2" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Card" parent="HBoxContainer/Column2" instance=ExtResource("1_gwp4k")]
 material = SubResource("ShaderMaterial_e3vyn")
 layout_mode = 2
 
-[node name="Card3" parent="HBoxContainer" unique_id=1914870961 instance=ExtResource("1_gwp4k")]
+[node name="Reroll" type="Button" parent="HBoxContainer/Column2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "REROLL"
+
+[node name="Column3" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Card" parent="HBoxContainer/Column3" instance=ExtResource("1_gwp4k")]
 material = SubResource("ShaderMaterial_a53vx")
 layout_mode = 2
+
+[node name="Reroll" type="Button" parent="HBoxContainer/Column3"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "REROLL"
 
 [node name="Label" type="Label" parent="." unique_id=1456265203]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 32.0
-offset_bottom = 62.0
+offset_top = 64.0
+offset_bottom = 124.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_e3vyn")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 48
 text = "PICK AN ITEM"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="FlipSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_flip")
+volume_db = -4.0
+bus = &"SFX"
+
+[connection signal="pressed" from="HBoxContainer/Column/Card" to="." method="_on_card_pressed" binds= [0]]
+[connection signal="pressed" from="HBoxContainer/Column/Reroll" to="." method="_on_reroll_pressed" binds= [0]]
+[connection signal="pressed" from="HBoxContainer/Column2/Card" to="." method="_on_card_pressed" binds= [1]]
+[connection signal="pressed" from="HBoxContainer/Column2/Reroll" to="." method="_on_reroll_pressed" binds= [1]]
+[connection signal="pressed" from="HBoxContainer/Column3/Card" to="." method="_on_card_pressed" binds= [2]]
+[connection signal="pressed" from="HBoxContainer/Column3/Reroll" to="." method="_on_reroll_pressed" binds= [2]]
+[connection signal="cards_dealt" from="." to="FlipSound" method="play" binds= [0.0]]

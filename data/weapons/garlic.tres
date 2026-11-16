@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Weapon" format=3]
+
+[ext_resource type="Script" path="res://scenes/Projectiles/weapon.gd" id="1_weapon"]
+[ext_resource type="Texture2D" uid="uid://bjactnmsg4aid" path="res://assets/textures/items/weapons_incons.png" id="2_sheet"]
+[ext_resource type="PackedScene" path="res://scenes/Weapons/Garlic/garlic.tscn" id="3_scene"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icon"]
+atlas = ExtResource("2_sheet")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_weapon")
+scene = ExtResource("3_scene")
+title = "Garlic"
+texture = SubResource("AtlasTexture_icon")
+description = "A stinking aura that hurts anything close."
+damage = 3.0
+cooldown = 0.6
+area = 75.0
+damage_per_level = 1.0
+cooldown_per_level = 0.03
+area_per_level = 9.0

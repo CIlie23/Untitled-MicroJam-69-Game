@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Enemy" format=3]
+
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/firebat/firebat_frames.tres" id="2_frames"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_attack_set.tres" id="3_attack"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_death_set.tres" id="4_death"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Movement/flyby_movement.tscn" id="6_move"]
+
+[resource]
+script = ExtResource("1_enemy")
+title = "Firebat"
+sprite_frames = ExtResource("2_frames")
+faces_left = true
+size = 1.0
+collision_radius = 14.0
+health = 4.0
+damage = 3.5
+attack_interval = 1.0
+speed = 230.0
+airborne = true
+spawn_weight = 0.35
+unlock_time = 360.0
+group_size = Vector2i(3, 5)
+movement = ExtResource("6_move")
+attack_sound = ExtResource("3_attack")
+death_sound = ExtResource("4_death")

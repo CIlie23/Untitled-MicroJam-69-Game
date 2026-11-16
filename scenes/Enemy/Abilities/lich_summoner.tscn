@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/Enemy/Abilities/summoner.gd" id="1_summoner"]
+[ext_resource type="PackedScene" uid="uid://2hp54xbjqdyl" path="res://scenes/Enemy/enemy.tscn" id="2_enemy"]
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="3_enemy_type"]
+[ext_resource type="Resource" path="res://data/monsters/skull.tres" id="4_skull"]
+[ext_resource type="Resource" path="res://data/monsters/firebat.tres" id="5_firebat"]
+[ext_resource type="Resource" path="res://data/monsters/pile_of_bodies.tres" id="6_flesh"]
+[ext_resource type="AudioStream" path="res://assets/sounds/lich/arise lich.wav" id="7_voice"]
+
+[node name="LichSummoner" type="Node2D"]
+script = ExtResource("1_summoner")
+enemy_scene = ExtResource("2_enemy")
+rotation_types = Array[ExtResource("3_enemy_type")]([ExtResource("4_skull"), ExtResource("5_firebat")])
+rare_type = ExtResource("6_flesh")
+rare_chance = 0.08
+count = 4
+spread = 90.0
+minion_heal_chance = 0.15
+summon_on_spawn = true
+spawn_summon_delay = 5.5
+
+[node name="SummonTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 7.0
+autostart = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="."]
+volume_db = 6.0
+stream = ExtResource("7_voice")
+bus = &"SFX"
+
+[connection signal="summoned" from="." to="Voice" method="play" binds= [0.0]]
+[connection signal="timeout" from="SummonTimer" to="." method="_on_summon_timer_timeout"]

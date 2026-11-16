@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b487c5rpkuuh4"
+path="res://.godot/imported/arise lich.wav-9844bc067ac62b7d54b0137a5f08a718.sample"
+
+[deps]
+
+source_file="res://assets/sounds/lich/arise lich.wav"
+dest_files=["res://.godot/imported/arise lich.wav-9844bc067ac62b7d54b0137a5f08a718.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

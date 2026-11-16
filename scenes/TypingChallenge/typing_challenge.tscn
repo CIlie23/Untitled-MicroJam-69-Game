@@ -49,13 +49,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TimeBar" type="ProgressBar" parent="." unique_id=1094610449]
-custom_minimum_size = Vector2(240, 14)
+custom_minimum_size = Vector2(480, 28)
 layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -320.0
-offset_right = 320.0
-offset_bottom = 14.0
+offset_left = -640.0
+offset_right = 640.0
+offset_bottom = 28.0
 grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_lea8i")
 theme_override_styles/fill = SubResource("StyleBoxFlat_s153o")
@@ -67,21 +67,21 @@ layout_mode = 0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -64.0
-offset_bottom = 64.0
+offset_top = -128.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 32
 alignment = 1
 
 [node name="LifeBar" type="HBoxContainer" parent="VBoxContainer" unique_id=386309681]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 6
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=1875451828]
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 bbcode_enabled = true
 text = "[tornado radius=10.0 freq=1.0 connected=1]TYPE THIS"

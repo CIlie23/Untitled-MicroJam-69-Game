@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/Enemy/Abilities/summoner.gd" id="1_summoner"]
+[ext_resource type="PackedScene" uid="uid://2hp54xbjqdyl" path="res://scenes/Enemy/enemy.tscn" id="2_enemy"]
+[ext_resource type="Resource" path="res://data/monsters/skull.tres" id="3_skull"]
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="4_enemy_type"]
+
+[node name="SkullSummoner" type="Node2D"]
+script = ExtResource("1_summoner")
+enemy_scene = ExtResource("2_enemy")
+rotation_types = Array[ExtResource("4_enemy_type")]([ExtResource("3_skull")])
+
+[node name="SummonTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="SummonTimer" to="." method="_on_summon_timer_timeout"]

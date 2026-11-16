@@ -1,76 +1,144 @@
 [gd_scene format=3 uid="uid://bxtcmbhxedmc5"]
 
-[ext_resource type="Script" path="res://scenes/credits_menu.gd" id="1_cre01"]
+[ext_resource type="Script" path="res://scenes/MenuScenes/Overlay/overlay.gd" id="1_overlay"]
+[ext_resource type="PackedScene" path="res://scenes/MenuScenes/Overlay/overlay_background.tscn" id="2_bg"]
 
-[node name="Credits" type="Control" unique_id=1067645547]
+[node name="Credits" type="Control"]
+process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_cre01")
+script = ExtResource("1_overlay")
 
-[node name="Panel" type="Panel" parent="." unique_id=771410167]
+[node name="OverlayBackground" parent="." instance=ExtResource("2_bg")]
+layout_mode = 1
+
+[node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 40.0
+offset_right = -200.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleHere" type="Label" parent="." unique_id=730234822]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -271.0
-offset_top = 80.0
-offset_right = -80.0
-offset_bottom = 130.25
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 36
-text = "TITLE HERE"
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1008341689]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 21.0
-offset_top = -100.0
-offset_right = 417.0
-offset_bottom = 100.0
-grow_vertical = 2
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "CREDITS"
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1053250403]
+[node name="Scroll" type="ScrollContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Grid" type="GridContainer" parent="Panel/VBoxContainer/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = 18
+columns = 2
+
+[node name="Role0" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.75, 0.9, 1)
+text = "Programming"
+
+[node name="Name0" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "minotavi & MaskMajor"
+
+[node name="Role1" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.75, 0.9, 1)
+text = "Art & UI"
+
+[node name="Name1" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MaskMajor"
+
+[node name="Role2" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.75, 0.9, 1)
+text = "Voice Acting & Creature Sounds"
+
+[node name="Name2" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "carap"
+
+[node name="Role3" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.75, 0.9, 1)
+text = "Asset Packs"
+
+[node name="Name3" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Toy Master
+ansimuz"
+
+[node name="Role4" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.75, 0.9, 1)
+text = "Particles & UI Sounds"
+
+[node name="Name4" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kenney (kenney.nl)"
+
+[node name="Role5" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.75, 0.9, 1)
+text = "Soundtrack"
+
+[node name="Name5" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "alkakrab
+Ironchest Games"
+
+[node name="Role6" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.75, 0.9, 1)
+text = "Made for"
+
+[node name="Name6" type="Label" parent="Panel/VBoxContainer/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Micro Jam: Halloween 2026"
+
+[node name="Thanks" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Thanks for playing!"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "CREDITS:"
-
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=791156139]
-layout_mode = 2
-text = "CREDIT GOES HERE
-CREDIT GOES HERE
-CREDIT GOES HERE
-CREDIT GOES HERE
-
-Thanks for playing!
-"
-
-[node name="Back" type="Button" parent="." unique_id=885345112]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -42.0
-offset_right = -10.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
 text = "BACK"
 
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]

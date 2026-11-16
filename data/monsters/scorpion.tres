@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Enemy" format=3]
+
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/scorpion/scorpion_frames.tres" id="2_frames"]
+[ext_resource type="AudioStream" path="res://assets/sounds/scorpion/attack_set.tres" id="3_attack"]
+[ext_resource type="AudioStream" path="res://assets/sounds/scorpion/death_set.tres" id="4_death"]
+
+[resource]
+script = ExtResource("1_enemy")
+title = "Scorpion"
+sprite_frames = ExtResource("2_frames")
+size = 1.0
+collision_radius = 16.0
+health = 10.0
+damage = 3.5
+attack_interval = 1.2
+speed = 70.0
+spawn_weight = 1.0
+unlock_time = 0.0
+attack_sound = ExtResource("3_attack")
+death_sound = ExtResource("4_death")

@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scenes/DeathScreen/death_screen.gd" id="1_death"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_death"]
-bg_color = Color(0.06, 0.05, 0.09, 0.85)
+[ext_resource type="PackedScene" path="res://scenes/MenuScenes/Overlay/overlay_background.tscn" id="2_bg"]
 
 [node name="DeathScreen" type="Control"]
 process_mode = 2
@@ -15,14 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_death")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" parent="." instance=ExtResource("2_bg")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_death")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -31,18 +23,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -100.0
-offset_right = 200.0
-offset_bottom = 100.0
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 48
 alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 96
 text = "YOU DIED"
 horizontal_alignment = 1
 

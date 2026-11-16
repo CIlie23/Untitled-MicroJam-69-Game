@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/Enemy/Abilities/psionic_sword.gd" id="1_sword"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/psionic/sword_frames.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blade"]
+size = Vector2(72, 14)
+
+[node name="PsionicSword" type="Area2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 1
+monitoring = false
+script = ExtResource("1_sword")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_frames")
+animation = &"generate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_blade")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

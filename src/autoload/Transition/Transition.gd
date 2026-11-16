@@ -22,6 +22,7 @@ func change_scene(path: String) -> void:
 	if get_tree().change_scene_to_file(path) != OK:
 		push_error("Transition: could not load %s" % path)
 	await get_tree().process_frame # let the new scene enter the tree before revealing
+	get_tree().paused = false
 	reveal() # always reveal: a failed load must not leave the player on a black screen
 
 
