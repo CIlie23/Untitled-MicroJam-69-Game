@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Enemy" format=3]
+
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/pile_of_bodies/pile_of_bodies_frames.tres" id="2_frames"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_attack_set.tres" id="3_attack"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_death_set.tres" id="4_death"]
+
+[resource]
+script = ExtResource("1_enemy")
+title = "Flesh Wall"
+sprite_frames = ExtResource("2_frames")
+tint = Color(1, 0.7, 0.7, 1)
+size = 1.3
+collision_radius = 22.0
+health = 30.0
+damage = 20.0
+attack_interval = 1.0
+speed = 40.0
+spawn_weight = 0.0
+attack_sound = ExtResource("3_attack")
+death_sound = ExtResource("4_death")

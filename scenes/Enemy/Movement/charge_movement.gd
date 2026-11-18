@@ -17,6 +17,7 @@ func steer(enemy: CharacterBody2D, delta: float) -> Vector2:
 
 func next_phase(enemy: CharacterBody2D) -> void:
 	charging = not charging
+	enemy.play_animation(&"move" if charging else &"stop")
 	if charging:
 		charge_direction = enemy.global_position.direction_to(enemy.player_reference.global_position)
 		phase_left = charge_time

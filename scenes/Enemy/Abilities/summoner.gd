@@ -11,6 +11,7 @@ signal summoned
 @export_range(-1.0, 1.0) var minion_heal_chance: float = -1.0
 @export var summon_on_spawn: bool = false
 @export var spawn_summon_delay: float = 0.0
+@export var minion_immunity: float = 0.0
 
 var summoner: CharacterBody2D
 var step := 0
@@ -62,5 +63,7 @@ func summon(type: Enemy) -> void:
 	minion.player_reference = summoner.player_reference
 	if minion_heal_chance >= 0.0:
 		minion.heal_drop_chance = minion_heal_chance
+	if minion_immunity > 0.0:
+		minion.make_immune(minion_immunity)
 	minion.position = summoner.position + Vector2(randf_range(-spread, spread), randf_range(-spread, spread))
 	get_tree().current_scene.add_child(minion)

@@ -43,6 +43,9 @@
 [ext_resource type="Resource" path="res://data/monsters/unique/scorpion.tres" id="u_scorpion"]
 [ext_resource type="PackedScene" path="res://scenes/VictoryScreen/victory_screen.tscn" id="v_victory"]
 [ext_resource type="AudioStream" path="res://assets/sounds/lich/lich dying.wav" id="v_lich_dying"]
+[ext_resource type="Resource" path="res://data/monsters/flesh_wall.tres" id="m_flesh_wall"]
+[ext_resource type="PackedScene" path="res://scenes/HUD/HurtVignette/hurt_vignette.tscn" id="i_vignette"]
+[ext_resource type="PackedScene" path="res://scenes/Effects/HitSounds/hit_sounds.tscn" id="i_hits"]
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpfill"]
 bg_color = Color(0.85, 0.12, 0.15, 1)
 
@@ -146,6 +149,8 @@ unique_name_in_owner = true
 player = NodePath("../Player")
 enemy_types = Array[ExtResource("3_1yooq")]([ExtResource("m_skull"), ExtResource("m_haunted_doll"), ExtResource("m_scorpion"), ExtResource("m_dead_words"), ExtResource("m_firebat"), ExtResource("m_pile_of_bodies"), ExtResource("m_battering_ram"), ExtResource("m_coffin")])
 unique_bosses = Array[ExtResource("3_1yooq")]([ExtResource("u_pile_of_bodies"), ExtResource("u_battering_ram"), ExtResource("m_psionic"), ExtResource("u_coffin"), ExtResource("u_scorpion")])
+flesh_ring_type = ExtResource("m_flesh_wall")
+test_spawns_at_start = Array[ExtResource("3_1yooq")]([ExtResource("u_coffin")])
 final_boss = ExtResource("m_lich")
 
 [node name="Player" parent="." unique_id=1599138642 instance=ExtResource("2_sl2e5")]
@@ -190,6 +195,8 @@ unique_name_in_owner = true
 stream = ExtResource("v_lich_dying")
 volume_db = 3.0
 bus = &"SFX"
+
+[node name="HitSounds" parent="." instance=ExtResource("i_hits")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2035672722]
 
@@ -344,6 +351,9 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "LVL 1"
 
+[node name="HurtVignette" parent="CanvasLayer/Control" instance=ExtResource("i_vignette")]
+layout_mode = 1
+
 [node name="TypingChallenge" parent="CanvasLayer/Control" unique_id=1649663134 instance=ExtResource("17_typing")]
 unique_name_in_owner = true
 visible = false
@@ -375,3 +385,4 @@ inventory = NodePath("../../Player/Inventory")
 [connection signal="departed" from="SoulDeparture" to="." method="_on_soul_departure_departed"]
 [connection signal="final_boss_spawned" from="Spawner" to="." method="_on_spawner_final_boss_spawned"]
 [connection signal="final_boss_died" from="Spawner" to="." method="_on_spawner_final_boss_died"]
+[connection signal="hurt" from="Player" to="CanvasLayer/Control/HurtVignette" method="_on_player_hurt"]

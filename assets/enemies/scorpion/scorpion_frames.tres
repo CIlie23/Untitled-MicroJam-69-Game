@@ -1,7 +1,8 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://d1sq1btn21sb"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://buyk51tju58gn"]
 
 [ext_resource type="Texture2D" uid="uid://b3n2tv4n2rb30" path="res://assets/enemies/scorpion/walk.png" id="1_sheet"]
 [ext_resource type="Texture2D" uid="uid://cai5r136a80ap" path="res://assets/enemies/scorpion/sting.png" id="2_sheet"]
+[ext_resource type="Texture2D" uid="uid://2oygarq0ptx8" path="res://assets/enemies/scorpion/poison.png" id="3_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_attack_0"]
 atlas = ExtResource("2_sheet")
@@ -18,6 +19,26 @@ region = Rect2(96, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_attack_3"]
 atlas = ExtResource("2_sheet")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cast_0"]
+atlas = ExtResource("3_sheet")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cast_1"]
+atlas = ExtResource("3_sheet")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cast_2"]
+atlas = ExtResource("3_sheet")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cast_3"]
+atlas = ExtResource("3_sheet")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cast_4"]
+atlas = ExtResource("3_sheet")
+region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_move_0"]
 atlas = ExtResource("1_sheet")
@@ -52,6 +73,26 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cast_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cast_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cast_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cast_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cast_4")
+}],
+"loop": 0,
+"name": &"cast",
 "speed": 10.0
 }, {
 "frames": [{

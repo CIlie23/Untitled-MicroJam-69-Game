@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/Enemy/Abilities/curse_caster.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/curse_orb.tscn" id="2_orb"]
+
+[node name="CurseCaster" type="Node2D"]
+script = ExtResource("1_script")
+orb_scene = ExtResource("2_orb")
+first_delay = 4.0
+damage = 25.0
+
+[node name="CurseTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 9.0
+
+
+[connection signal="timeout" from="CurseTimer" to="." method="_on_curse_timer_timeout"]

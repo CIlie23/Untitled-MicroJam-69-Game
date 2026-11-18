@@ -10,7 +10,7 @@ script = ExtResource("1_cast")
 blast_scene = ExtResource("2_blast")
 warning_scene = ExtResource("4_warn")
 first_delay = 10.5
-damage = 9.0
+damage = 22.0
 
 [node name="CastTimer" type="Timer" parent="."]
 unique_name_in_owner = true

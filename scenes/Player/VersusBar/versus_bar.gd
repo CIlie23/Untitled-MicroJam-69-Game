@@ -8,7 +8,8 @@ signal soul_took_over
 const PAIR_OVERLAP := 12.0 # the faces are pressed into each other, soul in front
 
 @export var possession_max: float = 100.0
-@export var levels_to_possess: float = 1.5
+@export var levels_to_possess: float = 2.0
+@export var possession_enabled: bool = true
 @export var exorcism_keep: float = 0.0
 
 var possession := 0.0
@@ -47,7 +48,7 @@ func is_full() -> bool:
 
 
 func _add(amount: float) -> void:
-	if expelled:
+	if expelled or not possession_enabled:
 		return
 	possession = minf(possession + amount, possession_max)
 	_refresh()

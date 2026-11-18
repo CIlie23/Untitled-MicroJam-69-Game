@@ -4,6 +4,7 @@ var target: Node2D
 var damage: float = 12.0
 var speed: float = 420.0
 var direction := Vector2.ZERO
+var fixed_direction := Vector2.ZERO
 
 
 func _ready() -> void:
@@ -15,7 +16,12 @@ func _physics_process(delta: float) -> void:
 
 
 func launch() -> void:
-	direction = global_position.direction_to(target.global_position) if is_instance_valid(target) else Vector2.DOWN
+	if fixed_direction != Vector2.ZERO:
+		direction = fixed_direction
+	elif is_instance_valid(target):
+		direction = global_position.direction_to(target.global_position)
+	else:
+		direction = Vector2.DOWN
 	rotation = direction.angle()
 	%Sprite.play(&"fly")
 	set_deferred("monitoring", true)

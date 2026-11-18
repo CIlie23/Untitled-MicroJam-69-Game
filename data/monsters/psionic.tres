@@ -7,14 +7,16 @@
 [ext_resource type="Resource" path="res://data/items/upgrade_card.tres" id="5_drop"]
 [ext_resource type="PackedScene" path="res://scenes/Enemy/Movement/keep_distance_movement.tscn" id="6_move"]
 [ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/sword_thrower.tscn" id="7_ab0"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/psionic_melee.tscn" id="7_ab1"]
 
 [resource]
 script = ExtResource("1_enemy")
+abilities = Array[PackedScene]([ExtResource("7_ab0"), ExtResource("7_ab1")])
 title = "Psionic"
 sprite_frames = ExtResource("2_frames")
 size = 1.5
 collision_radius = 24.0
-health = 3000.0
+health = 5000.0
 damage = 9.0
 attack_interval = 1.5
 speed = 45.0
@@ -23,6 +25,5 @@ drop = ExtResource("5_drop")
 spawn_weight = 0.0
 unlock_time = 900.0
 movement = ExtResource("6_move")
-abilities = Array[PackedScene]([ExtResource("7_ab0")])
 attack_sound = ExtResource("3_attack")
 death_sound = ExtResource("4_death")

@@ -3,25 +3,27 @@
 [ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
 [ext_resource type="SpriteFrames" path="res://assets/enemies/mage/lich_frames.tres" id="2_frames"]
 [ext_resource type="Resource" path="res://data/items/big_xp_gem.tres" id="5_drop"]
-[ext_resource type="PackedScene" path="res://scenes/Enemy/Movement/keep_distance_movement.tscn" id="6_move"]
 [ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/lich_summoner.tscn" id="7_ab0"]
 [ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/fall_caster.tscn" id="7_ab1"]
-[ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/lich_laugh.tscn" id="7_ab2"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/curse_caster.tscn" id="7_ab2"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/clone_caster.tscn" id="7_ab3"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/lich_laugh.tscn" id="7_ab4"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Movement/kite_movement.tscn" id="6_move"]
 
 [resource]
 script = ExtResource("1_enemy")
+abilities = Array[PackedScene]([ExtResource("7_ab0"), ExtResource("7_ab1"), ExtResource("7_ab2"), ExtResource("7_ab3"), ExtResource("7_ab4")])
 title = "Lich"
 sprite_frames = ExtResource("2_frames")
 faces_left = true
 size = 1.5
 collision_radius = 30.0
-health = 10000.0
-damage = 12.0
+health = 15000.0
+damage = 30.0
 attack_interval = 1.5
-speed = 40.0
+speed = 70.0
 boss = true
 drop = ExtResource("5_drop")
 spawn_weight = 0.0
 unlock_time = 1800.0
 movement = ExtResource("6_move")
-abilities = Array[PackedScene]([ExtResource("7_ab0"), ExtResource("7_ab1"), ExtResource("7_ab2")])

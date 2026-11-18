@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/Effects/HitSounds/hit_sounds.gd" id="1_hits"]
+[ext_resource type="AudioStream" path="res://assets/sounds/impacts/hit_set.tres" id="2_set"]
+
+[node name="HitSounds" type="AudioStreamPlayer" groups=["hit_sounds"]]
+stream = ExtResource("2_set")
+volume_db = -10.0
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("1_hits")

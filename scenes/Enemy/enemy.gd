@@ -3,16 +3,19 @@ extends CharacterBody2D
 signal died
 
 const PICKUP_SCENE := preload("res://scenes/Xp/pickups.tscn")
-const PICKUP_TYPE := preload("res://data/items/xp_gem.tres")
 const ELITE_DROP := preload("res://data/items/big_xp_gem.tres")
 const HEAL_DROP := preload("res://data/items/heal_orb.tres")
 const DEATH_FX := preload("res://scenes/Enemy/DeathFx/death_fx.tscn")
 const CHASE := preload("res://scenes/Enemy/Movement/chase_movement.tscn")
+const EXPLOSION := preload("res://scenes/Enemy/Abilities/lich_blast.tscn")
+const ENEMY_SCENE_PATH := "res://scenes/Enemy/enemy.tscn"
 
 @export var player_reference : CharacterBody2D
 @export var despawn_distance : float = 1000
 @export var crit_color : Color = Color(1, 0.15, 0.15)
 @export var elite_health_multiplier : float = 10.0
+@export var xp_gem_tiers : Array[Pickups] = []
+@export var xp_tier_strengths : Array[float] = [1.75, 3.0]
 var damage_popup_node = preload( "res://scenes/DamagePopup/damage.tscn")
 var speed : float = 60
 var damage : float
@@ -22,6 +25,8 @@ var hit_cooldown : float = 0.0
 var dying : bool = false
 var movement : Node
 var heal_drop_chance : float
+var xp_tier : int = 0
+var immune_left : float = 0.0
 
 
 var health : float:
@@ -68,6 +73,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	check_separation(delta)
 	hit_cooldown -= delta
+	update_immunity(delta)
 	knockback_update(delta)
 	face(velocity)
 
@@ -103,6 +109,38 @@ func face(motion: Vector2) -> void:
 	%Sprite.flip_h = (heading > 0.0) if type.faces_left else (heading < 0.0)
 
 
+func apply_strength(strength : float) -> void:
+	health *= strength
+	damage *= strength
+	xp_tier = 0
+	for threshold in xp_tier_strengths:
+		if strength >= threshold:
+			xp_tier += 1
+
+
+func make_immune(seconds : float) -> void:
+	immune_left = seconds
+	%Sprite.modulate.a = 0.5
+
+
+func update_immunity(delta : float) -> void:
+	if immune_left <= 0.0:
+		return
+	immune_left -= delta
+	if immune_left <= 0.0:
+		%Sprite.modulate.a = 1.0
+
+
+func play_cast() -> void:
+	%AttackSound.play()
+	play_animation(&"cast" if %Sprite.sprite_frames.has_animation(&"cast") else &"attack")
+
+
+func play_animation(animation : StringName) -> void:
+	if %Sprite.sprite_frames.has_animation(animation):
+		%Sprite.play(animation)
+
+
 func try_hit() -> float:
 	if hit_cooldown > 0.0 or dying:
 		return 0.0
@@ -118,7 +156,8 @@ func play_attack() -> void:
 
 
 func _on_sprite_animation_finished() -> void:
-	%Sprite.play(&"move")
+	if %Sprite.animation in [&"attack", &"cast"]:
+		%Sprite.play(&"move")
 
 
 func die() -> void:
@@ -127,7 +166,32 @@ func die() -> void:
 	get_tree().call_group(&"kill_counter", &"count_kill")
 	drop_pickup()
 	spawn_death_fx()
+	explode()
+	split()
 	queue_free()
+
+
+func explode() -> void:
+	if type.death_explosion_damage <= 0.0:
+		return
+	var blast = EXPLOSION.instantiate()
+	blast.position = position
+	blast.damage = type.death_explosion_damage
+	blast.scale = Vector2.ONE * type.death_explosion_radius / 32.0
+	get_tree().current_scene.add_child.call_deferred(blast)
+
+
+func split() -> void:
+	if type.splits_into == null:
+		return
+	var scene: PackedScene = load(ENEMY_SCENE_PATH)
+	for index in type.split_count:
+		var piece = scene.instantiate()
+		piece.type = type.splits_into
+		piece.player_reference = player_reference
+		piece.position = position + Vector2.RIGHT.rotated(TAU * index / type.split_count) * type.collision_radius
+		piece.make_immune(0.4)
+		get_tree().current_scene.add_child.call_deferred(piece)
 
 
 func spawn_death_fx() -> void:
@@ -141,7 +205,7 @@ func spawn_death_fx() -> void:
 func pickup_type() -> Pickups:
 	if elite:
 		return ELITE_DROP
-	return type.drop if type.drop else PICKUP_TYPE
+	return type.drop if type.drop else xp_gem_tiers[mini(xp_tier, xp_gem_tiers.size() - 1)]
 
 
 func drop_pickup():
@@ -171,12 +235,15 @@ func damage_popup(amount, crit := false):
 
 
 func take_damage(amount, crit := false):
+	if immune_left > 0.0:
+		return
 	var tween = get_tree().create_tween()
 	tween.tween_property(%Sprite, "modulate", Color(3, 0.25, 0.25), 0.2)
 	tween.chain().tween_property(%Sprite, "modulate", Color(1, 1, 1), 0.2)
 	tween.bind_node(self)
 
 	damage_popup(amount, crit)
+	get_tree().call_group(&"hit_sounds", &"play_hit")
 	ParticleFX.emit_at(self, &"spark", position)
 	if crit:
 		ParticleFX.emit_at(self, &"blood", position)

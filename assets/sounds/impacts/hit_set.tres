@@ -1,0 +1,18 @@
+[gd_resource type="AudioStreamRandomizer" format=3]
+
+[ext_resource type="AudioStream" path="res://assets/sounds/impacts/hit_000.ogg" id="1_s"]
+[ext_resource type="AudioStream" path="res://assets/sounds/impacts/hit_001.ogg" id="2_s"]
+[ext_resource type="AudioStream" path="res://assets/sounds/impacts/hit_002.ogg" id="3_s"]
+[ext_resource type="AudioStream" path="res://assets/sounds/impacts/hit_003.ogg" id="4_s"]
+
+[resource]
+random_pitch = 1.15
+streams_count = 4
+stream_0/stream = ExtResource("1_s")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_s")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_s")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_s")
+stream_3/weight = 1.0

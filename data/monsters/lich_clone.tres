@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Enemy" format=3]
+
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/mage/lich_frames.tres" id="2_frames"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_attack_set.tres" id="3_attack"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_death_set.tres" id="4_death"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Movement/kite_movement.tscn" id="6_move"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/clone_fall_caster.tscn" id="7_ab0"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/clone_curse_caster.tscn" id="7_ab1"]
+
+[resource]
+script = ExtResource("1_enemy")
+sprite_frames = ExtResource("2_frames")
+title = "Lich Clone"
+faces_left = true
+tint = Color(0.6, 0.6, 1, 0.75)
+size = 1.3
+collision_radius = 24.0
+health = 75.0
+damage = 10.0
+attack_interval = 1.5
+speed = 60.0
+boss = true
+heal_drop_chance = 0.0
+spawn_weight = 0.0
+movement = ExtResource("6_move")
+abilities = Array[PackedScene]([ExtResource("7_ab0"), ExtResource("7_ab1")])
+attack_sound = ExtResource("3_attack")
+death_sound = ExtResource("4_death")

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Enemy" format=3]
+
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/pile_of_bodies/pile_of_bodies_frames.tres" id="2_frames"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_attack_set.tres" id="3_attack"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_death_set.tres" id="4_death"]
+[ext_resource type="Resource" path="res://data/monsters/kamikaze_blob.tres" id="8_split"]
+
+[resource]
+script = ExtResource("1_enemy")
+sprite_frames = ExtResource("2_frames")
+title = "Flesh Blob"
+tint = Color(1, 0.8, 0.8, 1)
+size = 1.8
+collision_radius = 30.0
+health = 250.0
+damage = 15.0
+attack_interval = 1.5
+speed = 40.0
+spawn_weight = 0.0
+group_size = Vector2i(2, 2)
+splits_into = ExtResource("8_split")
+split_count = 6
+attack_sound = ExtResource("3_attack")
+death_sound = ExtResource("4_death")

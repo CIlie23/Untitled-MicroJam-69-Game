@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/Enemy/Abilities/clone_caster.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://2hp54xbjqdyl" path="res://scenes/Enemy/enemy.tscn" id="2_enemy"]
+[ext_resource type="Resource" path="res://data/monsters/lich_clone.tres" id="m0"]
+
+[node name="CloneCaster" type="Node2D"]
+script = ExtResource("1_script")
+enemy_scene = ExtResource("2_enemy")
+clone_type = ExtResource("m0")
+clone_count = 2
+first_delay = 12.0
+
+[node name="CloneTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 22.0
+
+
+[connection signal="timeout" from="CloneTimer" to="." method="_on_clone_timer_timeout"]

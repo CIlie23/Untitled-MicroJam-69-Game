@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/Enemy/Abilities/summoner.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://2hp54xbjqdyl" path="res://scenes/Enemy/enemy.tscn" id="2_enemy"]
+[ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="3_type"]
+[ext_resource type="Resource" path="res://data/monsters/scorpion_brood.tres" id="m0"]
+
+[node name="BroodSummoner" type="Node2D"]
+script = ExtResource("1_script")
+enemy_scene = ExtResource("2_enemy")
+rotation_types = Array[ExtResource("3_type")]([ExtResource("m0")])
+count = 3
+spread = 60.0
+summon_on_spawn = true
+spawn_summon_delay = 0.5
+
+[node name="SummonTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 9.0
+autostart = true
+
+
+[connection signal="timeout" from="SummonTimer" to="." method="_on_summon_timer_timeout"]

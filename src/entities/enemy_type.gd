@@ -18,6 +18,12 @@ class_name Enemy
 @export var drop : Pickups
 @export_range(0.0, 1.0) var heal_drop_chance : float = 0.02
 
+@export_group("On Death")
+@export var death_explosion_damage : float = 0.0
+@export var death_explosion_radius : float = 60.0
+@export var splits_into : Enemy
+@export var split_count : int = 0
+
 @export_group("Spawning")
 @export var spawn_weight : float = 1.0
 @export var unlock_time : float = 0.0

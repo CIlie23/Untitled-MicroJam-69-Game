@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/HUD/HurtVignette/hurt_vignette.gd" id="1_vig"]
+[ext_resource type="Shader" path="res://scenes/HUD/HurtVignette/hurt_vignette.gdshader" id="2_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vig"]
+resource_local_to_scene = true
+shader = ExtResource("2_shader")
+shader_parameter/intensity = 0.0
+
+[node name="HurtVignette" type="ColorRect"]
+material = SubResource("ShaderMaterial_vig")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_vig")

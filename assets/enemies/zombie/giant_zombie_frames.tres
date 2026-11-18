@@ -1,0 +1,103 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dtbbpj8xpy1nd"]
+
+[ext_resource type="Texture2D" uid="uid://b4mcp4h28gm0k" path="res://assets/enemies/zombie/spritesheet.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://dxmd5wycib1d0" path="res://assets/enemies/zombie/attack.png" id="2_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_4"]
+atlas = ExtResource("1_sheet")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_5"]
+atlas = ExtResource("1_sheet")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack_0"]
+atlas = ExtResource("2_sheet")
+region = Rect2(0, 0, 64, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack_1"]
+atlas = ExtResource("2_sheet")
+region = Rect2(64, 0, 64, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack_2"]
+atlas = ExtResource("2_sheet")
+region = Rect2(128, 0, 64, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack_3"]
+atlas = ExtResource("2_sheet")
+region = Rect2(192, 0, 64, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack_4"]
+atlas = ExtResource("2_sheet")
+region = Rect2(256, 0, 64, 57)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_attack_0")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_attack_1")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_attack_2")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_attack_3")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_attack_4")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_0")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_1")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_2")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_3")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_4")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_move_5")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 8.0
+}]
