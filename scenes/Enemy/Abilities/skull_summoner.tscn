@@ -1,16 +1,17 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://b5vho12qm8itc"]
 
-[ext_resource type="Script" path="res://scenes/Enemy/Abilities/summoner.gd" id="1_summoner"]
+[ext_resource type="Script" uid="uid://d2otermkpq0px" path="res://scenes/Enemy/Abilities/summoner.gd" id="1_summoner"]
 [ext_resource type="PackedScene" uid="uid://2hp54xbjqdyl" path="res://scenes/Enemy/enemy.tscn" id="2_enemy"]
 [ext_resource type="Resource" path="res://data/monsters/skull.tres" id="3_skull"]
 [ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="4_enemy_type"]
 
-[node name="SkullSummoner" type="Node2D"]
+[node name="SkullSummoner" type="Node2D" unique_id=611675070]
 script = ExtResource("1_summoner")
 enemy_scene = ExtResource("2_enemy")
 rotation_types = Array[ExtResource("4_enemy_type")]([ExtResource("3_skull")])
+max_concurrent = 4
 
-[node name="SummonTimer" type="Timer" parent="."]
+[node name="SummonTimer" type="Timer" parent="." unique_id=279315164]
 unique_name_in_owner = true
 wait_time = 5.0
 autostart = true

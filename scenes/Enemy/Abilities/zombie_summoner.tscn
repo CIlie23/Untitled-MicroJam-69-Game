@@ -1,23 +1,23 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://chu2qixhaj56n"]
 
-[ext_resource type="Script" path="res://scenes/Enemy/Abilities/summoner.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://d2otermkpq0px" path="res://scenes/Enemy/Abilities/summoner.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://2hp54xbjqdyl" path="res://scenes/Enemy/enemy.tscn" id="2_enemy"]
 [ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="3_type"]
 [ext_resource type="Resource" path="res://data/monsters/giant_zombie.tres" id="m0"]
 
-[node name="ZombieSummoner" type="Node2D"]
+[node name="ZombieSummoner" type="Node2D" unique_id=1701506046]
 script = ExtResource("1_script")
 enemy_scene = ExtResource("2_enemy")
 rotation_types = Array[ExtResource("3_type")]([ExtResource("m0")])
 count = 1
 spread = 70.0
+max_concurrent = 3
 summon_on_spawn = true
 spawn_summon_delay = 1.0
 
-[node name="SummonTimer" type="Timer" parent="."]
+[node name="SummonTimer" type="Timer" parent="." unique_id=330086409]
 unique_name_in_owner = true
 wait_time = 7.0
 autostart = true
-
 
 [connection signal="timeout" from="SummonTimer" to="." method="_on_summon_timer_timeout"]

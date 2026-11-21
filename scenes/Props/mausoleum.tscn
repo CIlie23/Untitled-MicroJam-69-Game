@@ -1,23 +1,24 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://c8x4gweuyt1ve"]
 
-[ext_resource type="Texture2D" path="res://assets/props/graveyard_props.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://870rr8fjpajh" path="res://assets/props/graveyard_props.png" id="1_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_prop"]
 atlas = ExtResource("1_sheet")
 region = Rect2(175, 0, 55, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_solid"]
-size = Vector2(110, 120)
+size = Vector2(103, 14)
 
-[node name="Mausoleum" type="StaticBody2D"]
+[node name="Mausoleum" type="StaticBody2D" unique_id=600032068]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2054688237]
 position = Vector2(0, -56)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_prop")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -36.0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763357593]
+position = Vector2(-0.5, 4)
 shape = SubResource("RectangleShape2D_solid")

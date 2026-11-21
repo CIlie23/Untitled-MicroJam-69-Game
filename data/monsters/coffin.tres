@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Enemy" format=3]
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://2q8sukns81mx"]
 
 [ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
-[ext_resource type="SpriteFrames" path="res://assets/enemies/coffin/coffin_frames.tres" id="2_frames"]
+[ext_resource type="SpriteFrames" uid="uid://ya88txi244tj" path="res://assets/enemies/coffin/coffin_frames.tres" id="2_frames"]
 [ext_resource type="AudioStream" path="res://assets/sounds/enemy_attack_set.tres" id="3_attack"]
 [ext_resource type="AudioStream" path="res://assets/sounds/enemy_death_set.tres" id="4_death"]
 [ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/skull_summoner.tscn" id="7_ab0"]
@@ -10,7 +10,6 @@
 script = ExtResource("1_enemy")
 title = "Coffin"
 sprite_frames = ExtResource("2_frames")
-size = 1.0
 collision_radius = 22.0
 health = 90.0
 damage = 6.0

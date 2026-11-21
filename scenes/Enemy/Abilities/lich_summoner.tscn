@@ -16,6 +16,7 @@ count = 1
 minion_immunity = 1.0
 spread = 90.0
 minion_heal_chance = 0.15
+max_concurrent = 4
 summon_on_spawn = true
 spawn_summon_delay = 5.5
 

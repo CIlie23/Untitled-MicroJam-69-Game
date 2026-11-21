@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bruntjvnj0psj"]
 
-[ext_resource type="Texture2D" path="res://assets/props/dead_tree_1.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://benh21hnssq06" path="res://assets/props/dead_tree_1.png" id="1_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f0"]
 atlas = ExtResource("1_sheet")
@@ -40,7 +40,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 4.0
 }]
@@ -48,16 +48,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trunk"]
 size = Vector2(36, 16)
 
-[node name="DeadTree1" type="StaticBody2D"]
+[node name="DeadTree1" type="StaticBody2D" unique_id=702208387]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=643121770]
 position = Vector2(31, -95)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tree")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34234000]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_trunk")

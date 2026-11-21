@@ -1,28 +1,29 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dc8rj0uv88c72"]
 
-[ext_resource type="Texture2D" path="res://assets/props/graveyard_props.png" id="1_sheet"]
-[ext_resource type="Script" path="res://scenes/Props/breakable_prop.gd" id="2_break"]
-[ext_resource type="Resource" path="res://data/items/heal_orb.tres" id="3_heal"]
+[ext_resource type="Texture2D" uid="uid://870rr8fjpajh" path="res://assets/props/graveyard_props.png" id="1_sheet"]
+[ext_resource type="Script" uid="uid://ih7x452k7253" path="res://scenes/Props/breakable_prop.gd" id="2_break"]
+[ext_resource type="Resource" uid="uid://crwea504svyvd" path="res://data/items/heal_orb.tres" id="3_heal"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_prop"]
 atlas = ExtResource("1_sheet")
 region = Rect2(95, 24, 17, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_solid"]
-size = Vector2(34, 84)
+size = Vector2(23, 13)
 
-[node name="ShrineTombstone" type="StaticBody2D"]
+[node name="ShrineTombstone" type="StaticBody2D" unique_id=1554006654]
 collision_layer = 20
 collision_mask = 0
 script = ExtResource("2_break")
 drop = ExtResource("3_heal")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1617573937]
 unique_name_in_owner = true
 position = Vector2(0, -32)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_prop")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -18.0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=310490374]
+y_sort_enabled = true
+position = Vector2(-0.5, 16.5)
 shape = SubResource("RectangleShape2D_solid")

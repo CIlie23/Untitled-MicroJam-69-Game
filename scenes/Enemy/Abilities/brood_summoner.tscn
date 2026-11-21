@@ -11,6 +11,7 @@ enemy_scene = ExtResource("2_enemy")
 rotation_types = Array[ExtResource("3_type")]([ExtResource("m0")])
 count = 3
 spread = 60.0
+max_concurrent = 6
 summon_on_spawn = true
 spawn_summon_delay = 0.5
 

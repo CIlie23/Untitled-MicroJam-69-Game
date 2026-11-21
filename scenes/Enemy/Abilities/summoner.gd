@@ -12,32 +12,55 @@ signal summoned
 @export var summon_on_spawn: bool = false
 @export var spawn_summon_delay: float = 0.0
 @export var minion_immunity: float = 0.0
+@export var max_concurrent: int = 0  # 0 = unlimited
 
 var summoner: CharacterBody2D
 var step := 0
+var spawned: Array[Node2D] = []
 
 
 func setup(enemy: CharacterBody2D) -> void:
 	summoner = enemy
 
 
+func prune_dead() -> void:
+	spawned = spawned.filter(func(m): return is_instance_valid(m) and m.is_inside_tree())
+
+
+func disable() -> void:
+	%SummonTimer.stop()
+	prune_dead()
+	for m in spawned:
+		if is_instance_valid(m):
+			m.queue_free()
+	spawned.clear()
+
+
 func _ready() -> void:
 	if summon_on_spawn:
 		summon_after_delay()
+	if not is_inside_tree():
+		await ready
 
 
 func summon_after_delay() -> void:
 	%SummonTimer.stop()
 	await get_tree().create_timer(spawn_summon_delay, false).timeout
+	prune_dead()
 	_on_summon_timer_timeout()
 	%SummonTimer.start()
 
 
 func _on_summon_timer_timeout() -> void:
+	prune_dead()
+	if max_concurrent > 0 and spawned.size() >= max_concurrent:
+		return
 	var type := next_type()
 	summoner.play_attack()
 	summoned.emit()
 	for index in amount_for(type):
+		if max_concurrent > 0 and spawned.size() >= max_concurrent:
+			break
 		summon(type)
 
 
@@ -67,3 +90,5 @@ func summon(type: Enemy) -> void:
 		minion.make_immune(minion_immunity)
 	minion.position = summoner.position + Vector2(randf_range(-spread, spread), randf_range(-spread, spread))
 	get_tree().current_scene.add_child(minion)
+	spawned.append(minion)
+	minion.tree_exited.connect(spawned.erase.bind(minion))

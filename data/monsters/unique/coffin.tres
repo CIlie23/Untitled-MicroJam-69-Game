@@ -1,18 +1,15 @@
-[gd_resource type="Resource" script_class="Enemy" format=3]
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dfwn0uw1gmd7t"]
 
 [ext_resource type="Script" uid="uid://sin4s0ny08t" path="res://src/entities/enemy_type.gd" id="1_enemy"]
-[ext_resource type="Resource" path="res://data/items/upgrade_card.tres" id="5_drop"]
-[ext_resource type="SpriteFrames" path="res://assets/enemies/coffin/coffin_frames.tres" id="2_frames"]
+[ext_resource type="SpriteFrames" uid="uid://ya88txi244tj" path="res://assets/enemies/coffin/coffin_frames.tres" id="2_frames"]
 [ext_resource type="AudioStream" path="res://assets/sounds/enemy_attack_set.tres" id="3_attack"]
 [ext_resource type="AudioStream" path="res://assets/sounds/enemy_death_set.tres" id="4_death"]
-[ext_resource type="PackedScene" path="res://scenes/Enemy/Abilities/zombie_summoner.tscn" id="7_ab0"]
+[ext_resource type="Resource" path="res://data/items/upgrade_card.tres" id="5_drop"]
+[ext_resource type="PackedScene" uid="uid://chu2qixhaj56n" path="res://scenes/Enemy/Abilities/zombie_summoner.tscn" id="7_ab0"]
 [ext_resource type="Resource" path="res://data/monsters/kamikaze_blob.tres" id="8_split"]
 
 [resource]
 script = ExtResource("1_enemy")
-split_count = 6
-splits_into = ExtResource("8_split")
-abilities = Array[PackedScene]([ExtResource("7_ab0")])
 title = "Grand Sarcophagus"
 sprite_frames = ExtResource("2_frames")
 tint = Color(1, 0.85, 0.55, 1)
@@ -24,7 +21,10 @@ attack_interval = 1.5
 speed = 18.0
 boss = true
 drop = ExtResource("5_drop")
+splits_into = ExtResource("8_split")
+split_count = 6
 spawn_weight = 0.0
 unlock_time = 1080.0
+abilities = Array[PackedScene]([ExtResource("7_ab0")])
 attack_sound = ExtResource("3_attack")
 death_sound = ExtResource("4_death")

@@ -11,6 +11,7 @@ enemy_scene = ExtResource("2_enemy")
 rotation_types = Array[ExtResource("3_type")]([ExtResource("m0")])
 count = 3
 spread = 70.0
+max_concurrent = 6
 
 [node name="SummonTimer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -42,12 +42,9 @@ var flesh_ring_enabled : bool = true
 func _ready() -> void:
 	if final_boss_at_start:
 		spawn_final_boss.call_deferred()
-	spawn_test_enemies.call_deferred()
-
 
 func spawn_final_boss() -> void:
 	spawn_final_boss_at(player.position + Vector2.RIGHT.rotated(randf() * TAU) * boss_spawn_distance)
-
 
 func spawn_final_boss_at(pos : Vector2) -> Node2D:
 	end_regular_spawns()
